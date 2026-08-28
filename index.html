@@ -435,10 +435,10 @@
       </div>
     </div>
 
-    <!-- AREA TOMBOL AKSI UTAMA DI BAGIAN PALING BAWAH -->
-    <div class="mt-8 pt-6 border-t border-slate-800">
+    <!-- AREA TOMBOL AKSI UTAMA DI BAGIAN BAWAH -->
+    <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
       <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <!-- Tombol WhatsApp -->
+        <!-- Tombol WhatsApp Ringkasan -->
         <button onclick="openWhatsAppModal()" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-bold text-xs rounded-xl shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 transition transform active:scale-95">
           <span class="text-base">📲</span> Kirim Rangkuman Teknis (WhatsApp)
         </button>
@@ -447,6 +447,27 @@
         <button onclick="downloadCleanCSV()" class="w-full py-3.5 px-4 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/60 text-slate-200 hover:text-white font-bold text-xs rounded-xl shadow-xl flex items-center justify-center gap-2 transition transform active:scale-95">
           <span class="text-base text-cyan-400">📑</span> Unduh File RAB (.csv)
         </button>
+      </div>
+
+      <!-- BANNER DIRECT DUKUNGAN TEKNISI (DI BAWAH HALAMAN) -->
+      <div class="max-w-xl mx-auto">
+        <a href="https://wa.me/628158855537?text=Halo%20Mas%20Mbong%2C%20saya%20mau%20bertanya%20mengenai%20videotron" target="_blank" rel="noopener noreferrer" class="w-full p-4 bg-slate-900/90 hover:bg-slate-900 border-2 border-emerald-500/50 hover:border-emerald-400 rounded-2xl shadow-2xl flex items-center justify-between gap-3.5 transition transform hover:-translate-y-0.5 active:scale-[0.98] group">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl overflow-hidden border border-emerald-500/50 bg-slate-950 flex-shrink-0 p-0.5 shadow-md flex items-center justify-center">
+              <img src="https://share.google/ll8RKI3f3BFdYKDBX" alt="Icon Teknisi" class="w-full h-full object-cover rounded-lg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/10uMkYanCm9dP1hFS6FOVtvlZYi4oFhpV';">
+            </div>
+            <div class="text-left">
+              <span class="text-xs font-black text-emerald-400 group-hover:text-emerald-300 uppercase tracking-wide flex items-center gap-1.5">
+                <span>💬</span> Minta Dukungan Teknisi
+              </span>
+              <p class="text-[11px] text-slate-400 font-medium mt-0.5">Konsultasi langsung via WhatsApp (08158855537)</p>
+            </div>
+          </div>
+          <div class="px-3.5 py-1.5 bg-emerald-500 text-slate-950 rounded-xl font-extrabold text-xs flex items-center gap-1 shadow-lg shadow-emerald-500/20 group-hover:bg-emerald-400 transition">
+            <span>Chat</span>
+            <span class="text-sm">➔</span>
+          </div>
+        </a>
       </div>
     </div>
   </main>
