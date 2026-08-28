@@ -26,7 +26,7 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #020617; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
     .glass-card {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.65));
       backdrop-filter: blur(12px);
@@ -388,7 +388,9 @@
               <span class="p-1.5 bg-amber-500/20 text-amber-400 rounded-lg text-xs font-bold">ADMIN PRO</span>
               <h3 class="text-sm font-bold text-amber-400">Panel Modifikasi &amp; Manajemen Sistem</h3>
             </div>
-            <span class="text-[10px] bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded">Unlocked</span>
+            <button onclick="logoutAdmin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1 rounded-lg border border-slate-700 transition font-semibold flex items-center gap-1">
+              <span>🔒</span> Tutup Mode Admin
+            </button>
           </div>
 
           <!-- Form Konfigurasi Internal Parameter Daya & Standar -->
@@ -547,7 +549,7 @@
     </div>
   </div>
 
-  <!-- LOGIKA JAVASCRIPT: ASPEK RASIO PRESISI & KALKULASI 100% -->
+  <!-- LOGIKA JAVASCRIPT -->
   <script>
     let currentDisplayType = 'indoor';
     let currentUnit = 'cm';
@@ -643,7 +645,6 @@
       showToast(`Satuan diubah ke ${unit === 'm' ? 'Meter' : 'Centimeter'}`, '📐');
     }
 
-    // Algoritma Simplifikasi Rasio Aspek Menjadi Pecahan Sederhana (GCD)
     function getGCD(a, b) {
       return b === 0 ? a : getGCD(b, a % b);
     }
@@ -653,7 +654,6 @@
       let num = width / gcd;
       let den = height / gcd;
 
-      // Jika rasionya terlalu besar (misal 512:321), bulatkan ke standar industri terdekat
       const ratio = width / height;
       let standardName = "Custom Rasio";
 
@@ -784,9 +784,7 @@
       const totalPixels = totalPixelW * totalPixelH;
       const megapixels = (totalPixels / 1000000).toFixed(2);
 
-      // Hitung Aspek Rasio Sangat Presisi
       const aspectInfo = getAspectRatioString(totalPixelW, totalPixelH);
-
       const procSpec = getAccurateProcessor(totalPixels);
 
       const totalWattsDC = totalModules * modSpec.maxWattsDC;
@@ -834,7 +832,6 @@
       const btu = avgPowerWatts * 3.412;
       const acPK = (btu / 9000).toFixed(1);
 
-      // Render Hasil ke Tampilan
       document.getElementById('out-module-count').innerText = `${modulesW} (P) × ${modulesH} (T) = ${totalModules} Unit (${modSpec.widthMm}×${modSpec.heightMm}mm)`;
       document.getElementById('out-meter-size').innerText = `${actualWidthM.toFixed(2)} × ${actualHeightM.toFixed(2)} m (${widthCm.toFixed(0)} × ${heightCm.toFixed(0)} cm)`;
       document.getElementById('out-area').innerText = `${totalAreaSqm.toFixed(2)} m²`;
@@ -846,7 +843,6 @@
       document.getElementById('out-actual-size').innerText = `${widthCm.toFixed(0)} × ${heightCm.toFixed(0)} cm`;
       document.getElementById('out-viewing-dist').innerText = `${(pitchValue * 1.5).toFixed(1)} - ${(pitchValue * 3.0).toFixed(1)} m`;
 
-      // Render Aspek Rasio Presisi
       document.getElementById('out-exact-ratio').innerText = `${aspectInfo.fraction} (${aspectInfo.decimal} : 1)`;
       document.getElementById('out-standard-ratio').innerText = aspectInfo.standardName;
       document.getElementById('visual-aspect').innerText = aspectInfo.fraction;
