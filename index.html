@@ -51,7 +51,7 @@
   <header class="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md sticky top-0 z-30 px-4 py-3.5">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <!-- Logo Header Interaktif (Icon Profil Bulat & Proporsional) -->
+        <!-- Logo Header Interaktif Bulat Proporsional -->
         <button type="button" onclick="openProfileModal()" class="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-500/80 hover:border-amber-400 bg-slate-950 shadow-lg shadow-amber-500/20 transition transform active:scale-95 group focus:outline-none flex items-center justify-center flex-shrink-0" title="Profile Picture">
           <img id="main-profile-img" src="https://lh3.googleusercontent.com/d/10uMkYanCm9dP1hFS6FOVtvlZYi4oFhpV" alt="Avatar Profil" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
         </button>
@@ -213,37 +213,60 @@
           </div>
         </div>
 
-        <!-- Card 2: Rekomendasi Video Processor -->
-        <div class="glass-card p-5 rounded-2xl shadow-xl space-y-3 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-cyan-500/10 hover:-translate-y-1 active:scale-[0.98]">
+        <!-- Card 2: Rekomendasi Video Processor NOVASTAR & HUIDU (DUAL BRAND) -->
+        <div class="glass-card p-5 rounded-2xl shadow-xl space-y-4 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-cyan-500/10 hover:-translate-y-1 active:scale-[0.98]">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-            <h2 id="t-proc-title" class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2"><span>🎛️</span> Rekomendasi Video Processor Novastar</h2>
-            <span id="proc-port-badge" class="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded font-mono font-bold">Min. 1 Port LAN</span>
+            <h2 id="t-proc-title" class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2"><span>🎛️</span> Rekomendasi Controller (NovaStar &amp; Huidu)</h2>
+            <span id="proc-port-badge" class="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded font-mono font-bold">Min. 1 Port LAN</span>
           </div>
 
-          <div class="bg-slate-950/80 hover:bg-slate-900/80 transition-all p-4 rounded-xl border border-slate-800 space-y-3">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
-              <div>
-                <div id="t-lbl-proc-main" class="text-[11px] text-slate-400">Rekomendasi Controller Utama:</div>
-                <div id="out-proc-main" class="text-base sm:text-lg font-extrabold text-white font-mono mt-0.5">-</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <!-- Box NovaStar -->
+            <div class="bg-slate-950/80 hover:bg-slate-900/80 transition-all p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/10 space-y-2.5">
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span class="font-bold text-cyan-300 flex items-center gap-1.5 text-xs"><span>🌟</span> NovaStar Controller</span>
+                <span id="out-nova-load-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">Load: 0%</span>
               </div>
-              <div class="text-left sm:text-right">
-                <div id="t-lbl-proc-cap" class="text-[11px] text-slate-400">Kapasitas Loading Hardware:</div>
-                <div id="out-proc-cap" class="text-xs font-bold text-cyan-300 font-mono mt-0.5">-</div>
+              <div>
+                <div class="text-[10px] text-slate-400">Controller Utama (All-in-One / Player):</div>
+                <div id="out-nova-main" class="text-sm font-extrabold text-white font-mono mt-0.5">-</div>
+              </div>
+              <div class="text-[11px] text-slate-400">
+                <span>Kapasitas Hardware:</span> <strong id="out-nova-cap" class="text-cyan-300 font-mono">-</strong>
+              </div>
+              <div class="pt-2 border-t border-slate-800/60 text-[11px]">
+                <span class="text-slate-500">Alternatif NovaStar:</span>
+                <div id="out-nova-alt" class="text-slate-300 font-mono mt-0.5 font-medium">-</div>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div class="bg-slate-900/60 hover:bg-slate-800/80 transition-all p-2.5 rounded-xl border border-slate-800/80">
-                <span id="t-lbl-proc-ports" class="text-slate-400 text-[11px] block">Kebutuhan Output Port Ethernet:</span>
-                <strong id="out-proc-ports" class="text-cyan-300 font-mono">-</strong>
-                <span id="t-lbl-proc-port-note" class="text-[10px] text-slate-500 block mt-0.5">(Kapasitas max 650.000 px/port)</span>
+            <!-- Box Huidu -->
+            <div class="bg-slate-950/80 hover:bg-slate-900/80 transition-all p-4 rounded-xl border border-amber-500/30 bg-amber-950/10 space-y-2.5">
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span class="font-bold text-amber-300 flex items-center gap-1.5 text-xs"><span>⚡</span> Huidu (HD) Controller</span>
+                <span id="out-hd-load-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">Load: 0%</span>
               </div>
-              <div class="bg-slate-900/60 hover:bg-slate-800/80 transition-all p-2.5 rounded-xl border border-slate-800/80">
-                <span id="t-lbl-proc-alt" class="text-slate-400 text-[11px] block">Opsi Alternatif / Splicer:</span>
-                <strong id="out-proc-alt" class="text-slate-200 font-mono">-</strong>
-                <span id="out-proc-note" class="text-emerald-400 block mt-0.5">-</span>
+              <div>
+                <div class="text-[10px] text-slate-400">Controller Utama (HD-VP / HD-A):</div>
+                <div id="out-hd-main" class="text-sm font-extrabold text-white font-mono mt-0.5">-</div>
+              </div>
+              <div class="text-[11px] text-slate-400">
+                <span>Kapasitas Hardware:</span> <strong id="out-hd-cap" class="text-amber-300 font-mono">-</strong>
+              </div>
+              <div class="pt-2 border-t border-slate-800/60 text-[11px]">
+                <span class="text-slate-500">Alternatif Huidu:</span>
+                <div id="out-hd-alt" class="text-slate-300 font-mono mt-0.5 font-medium">-</div>
               </div>
             </div>
+          </div>
+
+          <!-- Kebutuhan Fisik Port Output -->
+          <div class="p-3 bg-slate-950/90 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+            <div>
+              <span id="t-lbl-proc-ports" class="text-slate-400">Kebutuhan Output Port Ethernet Gigabit:</span>
+              <strong id="out-proc-ports" class="text-cyan-300 font-mono ml-1">-</strong>
+            </div>
+            <span id="t-lbl-proc-port-note" class="text-[10px] text-slate-500">(Kapasitas max 650.000 px per port RJ45)</span>
           </div>
         </div>
 
@@ -651,15 +674,10 @@
         card_view_dist: "Jarak Pandang Optimal",
         card_ac_cool: "Kebutuhan Pendingin AC",
         ac_unit: "PK",
-        proc_title: "🎛️ Rekomendasi Video Processor Novastar",
+        proc_title: "🎛️ Rekomendasi Controller (NovaStar & Huidu)",
         proc_min_port: "Min. {n} Port LAN",
-        lbl_proc_main: "Rekomendasi Controller Utama:",
-        lbl_proc_cap: "Kapasitas Loading Hardware:",
-        lbl_proc_ports: "Kebutuhan Output Port Ethernet:",
-        lbl_proc_port_note: "(Kapasitas max 650.000 px/port)",
-        lbl_proc_alt: "Opsi Alternatif / Splicer:",
-        lbl_proc_load: "Beban muatan:",
-        port_txt: "Port RJ45 Gigabit",
+        lbl_proc_ports: "Kebutuhan Output Port Ethernet Gigabit:",
+        lbl_proc_port_note: "(Kapasitas max 650.000 px per port RJ45)",
         elec_title: "⚡ Rekayasa Daya Listrik (IEC Standard)",
         lbl_power_max: "Daya Nyata AC Maksimal (100% Putih):",
         lbl_power_avg: "Daya Nyata AC Rata-Rata (~35% Video):",
@@ -747,15 +765,10 @@
         card_view_dist: "Optimal Viewing Distance",
         card_ac_cool: "AC Cooling Requirement",
         ac_unit: "HP",
-        proc_title: "🎛️ Recommended Novastar Video Processor",
+        proc_title: "🎛️ Recommended Controllers (NovaStar & Huidu)",
         proc_min_port: "Min. {n} LAN Ports",
-        lbl_proc_main: "Primary Controller Recommendation:",
-        lbl_proc_cap: "Hardware Loading Capacity:",
-        lbl_proc_ports: "Ethernet Output Ports Needed:",
-        lbl_proc_port_note: "(Capacity max 650,000 px/port)",
-        lbl_proc_alt: "Alternative / Splicer Option:",
-        lbl_proc_load: "Load capacity:",
-        port_txt: "RJ45 Gigabit Ports",
+        lbl_proc_ports: "Gigabit Ethernet Ports Needed:",
+        lbl_proc_port_note: "(Capacity max 650,000 px per RJ45 port)",
         elec_title: "⚡ Electrical Load Engineering (IEC Standard)",
         lbl_power_max: "Max Real Power AC (100% White):",
         lbl_power_avg: "Average Real Power AC (~35% Video):",
@@ -843,15 +856,10 @@
         card_view_dist: "最佳视距范围",
         card_ac_cool: "建议空调制冷量",
         ac_unit: "匹 (HP)",
-        proc_title: "🎛️ 诺瓦科技 (NovaStar) 视频处理器推荐",
+        proc_title: "🎛️ 控制系统与视频处理器推荐 (NovaStar & 灰度科技)",
         proc_min_port: "至少 {n} 个网口",
-        lbl_proc_main: "推荐主控设备:",
-        lbl_proc_cap: "硬件最大带载能力:",
         lbl_proc_ports: "千兆以太网输出需求:",
         lbl_proc_port_note: "(单口上限 650,000 点)",
-        lbl_proc_alt: "备选设备 / 拼接处理器:",
-        lbl_proc_load: "当前带载负荷:",
-        port_txt: "个 RJ45 千兆网口",
         elec_title: "⚡ 电力负荷计算 (IEC 国际标准)",
         lbl_power_max: "最大有功功率 (100% 全白测试):",
         lbl_power_avg: "平均有功功率 (~35% 视频画面):",
@@ -1026,11 +1034,8 @@
       document.getElementById('t-card-ac-cool').innerText = d.card_ac_cool;
 
       document.getElementById('t-proc-title').innerHTML = `<span>🎛️</span> ${d.proc_title.replace('🎛️ ', '')}`;
-      document.getElementById('t-lbl-proc-main').innerText = d.lbl_proc_main;
-      document.getElementById('t-lbl-proc-cap').innerText = d.lbl_proc_cap;
       document.getElementById('t-lbl-proc-ports').innerText = d.lbl_proc_ports;
       document.getElementById('t-lbl-proc-port-note').innerText = d.lbl_proc_port_note;
-      document.getElementById('t-lbl-proc-alt').innerText = d.lbl_proc_alt;
 
       document.getElementById('t-elec-title').innerHTML = `<span>⚡</span> ${d.elec_title.replace('⚡ ', '')}`;
       document.getElementById('t-lbl-power-max').innerText = d.lbl_power_max;
@@ -1211,60 +1216,115 @@
       };
     }
 
-    function getAccurateProcessor(totalPixels) {
+    // ALGORITMA REKOMENDASI TINGKAT LANJUT: NOVASTAR & HUIDU
+    function getAccurateProcessorRecommendations(totalPixels) {
       const portCapacity = parseFloat(document.getElementById('adm-port-cap')?.value) || 650000;
       const requiredPorts = Math.max(1, Math.ceil(totalPixels / portCapacity));
-      
-      let mainProc = "";
-      let maxCapText = "";
-      let altProc = "";
-      let maxCap = 0;
+
+      // 1. REKOMENDASI NOVASTAR
+      let novaMain = "";
+      let novaCapText = "";
+      let novaAlt = "";
+      let novaMaxCap = 0;
 
       if (totalPixels <= 650000) {
-        mainProc = "Novastar TB30 / TB2-4G";
-        maxCap = 650000;
-        maxCapText = currentLang === 'zh' ? "最大 650,000 点 (1-2 个网口)" : "Max 650.000 px (1-2 LAN Ports)";
-        altProc = "Novastar VX200 / Taurus Series";
+        novaMain = "Novastar TB30 / TB2-4G (Async/Sync)";
+        novaMaxCap = 650000;
+        novaCapText = currentLang === 'zh' ? "最大 650,000 点 (2 网口)" : "Max 650.000 px (2 LAN Ports)";
+        novaAlt = "Novastar VX200 / Taurus TB1-4G";
       } else if (totalPixels <= 1300000) {
-        mainProc = "Novastar VX400 / TB40";
-        maxCap = 1300000;
-        maxCapText = currentLang === 'zh' ? "最大 1,300,000 点 (2 个网口)" : "Max 1.300.000 px (2 LAN Ports)";
-        altProc = "Novastar TB50 / MCTRL300";
+        novaMain = "Novastar VX400 / TB40 (2-in-1 Pro)";
+        novaMaxCap = 1300000;
+        novaCapText = currentLang === 'zh' ? "最大 1,300,000 点 (2 网口)" : "Max 1.300.000 px (2 LAN Ports)";
+        novaAlt = "Novastar TB50 / TU15 Pro";
       } else if (totalPixels <= 2300000) {
-        mainProc = "Novastar VX400s-N / TB60";
-        maxCap = 2300000;
-        maxCapText = currentLang === 'zh' ? "最大 2,300,000 点 (4 个网口)" : "Max 2.300.000 px (4 LAN Ports)";
-        altProc = "Novastar MCTRL660 / VX400 All-in-One";
+        novaMain = "Novastar VX400s-N / TB60";
+        novaMaxCap = 2300000;
+        novaCapText = currentLang === 'zh' ? "最大 2,300,000 点 (4 网口)" : "Max 2.300.000 px (4 LAN Ports)";
+        novaAlt = "Novastar VX400 All-in-One / MCTRL660";
       } else if (totalPixels <= 3900000) {
-        mainProc = "Novastar VX600";
-        maxCap = 3900000;
-        maxCapText = currentLang === 'zh' ? "最大 3,900,000 点 (6 个网口)" : "Max 3.900.000 px (6 LAN Ports)";
-        altProc = "Novastar NovaPro UHD Jr / MCTRL660 PRO";
+        novaMain = "Novastar VX600 (3-Layer Scaler)";
+        novaMaxCap = 3900000;
+        novaCapText = currentLang === 'zh' ? "最大 3,900,000 点 (6 网口)" : "Max 3.900.000 px (6 LAN Ports)";
+        novaAlt = "Novastar NovaPro UHD Jr / MCTRL660 PRO";
       } else if (totalPixels <= 6500000) {
-        mainProc = "Novastar VX1000";
-        maxCap = 6500000;
-        maxCapText = currentLang === 'zh' ? "最大 6,500,000 点 (10 个网口)" : "Max 6.500.000 px (10 LAN Ports)";
-        altProc = "Novastar NovaPro UHD / KU20 (COEX)";
+        novaMain = "Novastar VX1000 (4K UHD Multi-Layer)";
+        novaMaxCap = 6500000;
+        novaCapText = currentLang === 'zh' ? "最大 6,500,000 点 (10 网口)" : "Max 6.500.000 px (10 LAN Ports)";
+        novaAlt = "Novastar KU20 (COEX 5G) / NovaPro UHD";
       } else if (totalPixels <= 10400000) {
-        mainProc = "Novastar VX16s";
-        maxCap = 10400000;
-        maxCapText = currentLang === 'zh' ? "最大 10,400,000 点 (16 个网口)" : "Max 10.400.000 px (16 LAN Ports)";
-        altProc = "Novastar H2 Modular Video Wall Splicer";
+        novaMain = "Novastar VX16s (16 Output Ports)";
+        novaMaxCap = 10400000;
+        novaCapText = currentLang === 'zh' ? "最大 10,400,000 点 (16 网口)" : "Max 10.400.000 px (16 LAN Ports)";
+        novaAlt = "Novastar MX40 Pro (COEX) / H2 Modular Splicer";
       } else {
-        mainProc = "Novastar H-Series (H2 / H5 / H9 / H15)";
-        maxCap = totalPixels * 1.5;
-        maxCapText = currentLang === 'zh' ? "多卡模块化超高清拼接 (4K/8K)" : "Multi-Card Modular Splicing (4K/8K)";
-        altProc = "Novastar CX40 Pro / MX40 Pro (COEX 5G)";
+        novaMain = "Novastar H-Series Modular (H2 / H5 / H9)";
+        novaMaxCap = totalPixels * 1.5;
+        novaCapText = currentLang === 'zh' ? "多卡模块化超高清大屏拼接 (4K/8K)" : "Multi-Card Modular Splicing (4K/8K)";
+        novaAlt = "Novastar CX80 Pro / Multi-MX40 Pro Cascade";
       }
 
-      const loadPercentage = Math.round((totalPixels / maxCap) * 100);
+      const novaLoadPercentage = Math.min(100, Math.round((totalPixels / novaMaxCap) * 100));
+
+      // 2. REKOMENDASI HUIDU (HD)
+      let hdMain = "";
+      let hdCapText = "";
+      let hdAlt = "";
+      let hdMaxCap = 0;
+
+      if (totalPixels <= 655360) {
+        hdMain = "Huidu HD-VP210 / HD-A3L (2-in-1 Video Pro)";
+        hdMaxCap = 655360;
+        hdCapText = currentLang === 'zh' ? "最大 655,360 点 (2 网口, 宽3840/高2048)" : "Max 655.360 px (2 LAN, Max 3840×2048)";
+        hdAlt = "Huidu HD-A4L / HD-C16C (Async)";
+      } else if (totalPixels <= 1300000) {
+        hdMain = "Huidu HD-VP410 (2-in-1 Video Processor)";
+        hdMaxCap = 1300000;
+        hdCapText = currentLang === 'zh' ? "最大 1,300,000 点 (2 网口, 宽3840/高2048)" : "Max 1.300.000 px (2 LAN, Max 3840×2048)";
+        hdAlt = "Huidu HD-A4 (Dual-Mode Sync/Async)";
+      } else if (totalPixels <= 2600000) {
+        hdMain = "Huidu HD-VP620 / HD-VP630 (4 Port Gigabit)";
+        hdMaxCap = 2600000;
+        hdCapText = currentLang === 'zh' ? "最大 2,600,000 点 (4 网口, 宽3840/高2048)" : "Max 2.600.000 px (4 LAN, Max 3840×2048)";
+        hdAlt = "Huidu HD-A6 (Sync/Async Box) / VP410S";
+      } else if (totalPixels <= 5200000) {
+        hdMain = "Huidu HD-VP820 / HD-VP830 (8 Port Gigabit)";
+        hdMaxCap = 5200000;
+        hdCapText = currentLang === 'zh' ? "最大 5,200,000 点 (8 网口, 4K Multi-Window)" : "Max 5.200.000 px (8 LAN, 4K Multi-Window)";
+        hdAlt = "Huidu HD-A8 (Dual-Mode Box) / VP630 Cascade";
+      } else if (totalPixels <= 7800000) {
+        hdMain = "Huidu HD-VP1220 / HD-VP1240 (12 Port Gigabit)";
+        hdMaxCap = 7800000;
+        hdCapText = currentLang === 'zh' ? "最大 7,800,000 点 (12 网口, 4K UHD)" : "Max 7.800.000 px (12 LAN, 4K UHD)";
+        hdAlt = "Huidu HD-VP1220S / VP830 Cascade";
+      } else if (totalPixels <= 10400000) {
+        hdMain = "Huidu HD-VP1620 / HD-VP1640 (16 Port Gigabit)";
+        hdMaxCap = 10400000;
+        hdCapText = currentLang === 'zh' ? "最大 10,400,000 点 (16 网口, 4K UHD)" : "Max 10.400.000 px (16 LAN, 4K UHD)";
+        hdAlt = "Huidu HD-VP1640C Multi-Layer Processor";
+      } else {
+        hdMain = "Huidu HD-VP2000 / Multi-Processor Matrix Splicer";
+        hdMaxCap = totalPixels * 1.5;
+        hdCapText = currentLang === 'zh' ? "多通道级联矩阵无缝拼接" : "Multi-Channel Matrix Splicing";
+        hdAlt = "Huidu Multi HD-VP1620 Cascading System";
+      }
+
+      const hdLoadPercentage = Math.min(100, Math.round((totalPixels / hdMaxCap) * 100));
 
       return {
-        mainProc,
-        maxCapText,
-        altProc,
         requiredPorts,
-        loadPercentage
+        nova: {
+          main: novaMain,
+          capText: novaCapText,
+          alt: novaAlt,
+          load: novaLoadPercentage
+        },
+        hd: {
+          main: hdMain,
+          capText: hdCapText,
+          alt: hdAlt,
+          load: hdLoadPercentage
+        }
       };
     }
 
@@ -1330,7 +1390,7 @@
       const megapixels = (totalPixels / 1000000).toFixed(2);
 
       const aspectInfo = getAspectRatioString(totalPixelW, totalPixelH);
-      const procSpec = getAccurateProcessor(totalPixels);
+      const procSpec = getAccurateProcessorRecommendations(totalPixels);
 
       // Rekayasa Kelistrikan IEC 60038
       const totalWattsDC = totalModules * modSpec.maxWattsDC;
@@ -1400,12 +1460,19 @@
       document.getElementById('visual-aspect').innerText = aspectInfo.fraction;
       document.getElementById('out-ratio-status').innerText = d.ratio_optimal;
 
-      document.getElementById('out-proc-main').innerText = procSpec.mainProc;
-      document.getElementById('out-proc-cap').innerText = procSpec.maxCapText;
-      document.getElementById('out-proc-ports').innerText = `${procSpec.requiredPorts} ${d.port_txt}`;
+      // Update Card Rekomendasi Controller NovaStar & Huidu
       document.getElementById('proc-port-badge').innerText = d.proc_min_port.replace('{n}', procSpec.requiredPorts);
-      document.getElementById('out-proc-alt').innerText = procSpec.altProc;
-      document.getElementById('out-proc-note').innerText = `${d.lbl_proc_load} ${procSpec.loadPercentage}%`;
+      document.getElementById('out-proc-ports').innerText = `${procSpec.requiredPorts} Port RJ45 Gigabit`;
+
+      document.getElementById('out-nova-main').innerText = procSpec.nova.main;
+      document.getElementById('out-nova-cap').innerText = procSpec.nova.capText;
+      document.getElementById('out-nova-alt').innerText = procSpec.nova.alt;
+      document.getElementById('out-nova-load-badge').innerText = `Load: ${procSpec.nova.load}%`;
+
+      document.getElementById('out-hd-main').innerText = procSpec.hd.main;
+      document.getElementById('out-hd-cap').innerText = procSpec.hd.capText;
+      document.getElementById('out-hd-alt').innerText = procSpec.hd.alt;
+      document.getElementById('out-hd-load-badge').innerText = `Load: ${procSpec.hd.load}%`;
 
       // Badge Resolusi
       const resBadge = document.getElementById('res-badge');
@@ -1468,7 +1535,8 @@
         current1P: current1P.toFixed(1), safety1P: safety1P.toFixed(1), mcb1P, cable1P,
         current3P: current3P.toFixed(1), safety3P: safety3P.toFixed(1), mcb3P, cable3P,
         gensetKVA, gensetKW, inrushCurrentEst,
-        controller: `${procSpec.mainProc} (${procSpec.requiredPorts} LAN Ports)`,
+        novaController: `${procSpec.nova.main} (${procSpec.requiredPorts} LAN Ports)`,
+        hdController: `${procSpec.hd.main} (${procSpec.requiredPorts} LAN Ports)`,
         acPK, displayType: currentDisplayType
       };
     }
@@ -1586,7 +1654,7 @@
       showToast('JSON Data downloaded!', '📁');
     }
 
-    // EXPORT CLEAN CSV
+    // EXPORT CLEAN CSV (TERMASUK NOVASTAR & HUIDU)
     function downloadCleanCSV() {
       const c = window.lastCalculations;
       if (!c) return;
@@ -1615,8 +1683,9 @@
           ['9', '物理总点数', `${c.totalPixels.toLocaleString(locale)} (${c.megapixels} MP)`, 'Dots'],
           ['10', '画幅比例', `${c.aspectRatio.fraction} (${c.aspectRatio.decimal}:1) - ${c.aspectRatio.standardName}`, '比例'],
           ['', '', '', ''],
-          ['B', '控制系统与视频处理器', '', ''],
-          ['1', '推荐主控设备', c.controller, '台'],
+          ['B', '控制系统与视频处理器推荐 (双品牌方案)', '', ''],
+          ['1', 'NovaStar 主控方案', c.novaController, '台'],
+          ['2', '灰度科技 (Huidu) 主控方案', c.hdController, '台'],
           ['', '', '', ''],
           ['C', '电力工程负荷计算 (IEC 国际标准)', '', ''],
           ['1', '最大有功功率 (100% 全白)', `${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} W)`, 'kW'],
@@ -1651,8 +1720,9 @@
           ['9', 'Total Accumulated Pixel Dots', `${c.totalPixels.toLocaleString(locale)} (${c.megapixels} MP)`, 'Dots'],
           ['10', 'Precision Aspect Ratio', `${c.aspectRatio.fraction} (${c.aspectRatio.decimal}:1) - ${c.aspectRatio.standardName}`, 'Ratio'],
           ['', '', '', ''],
-          ['B', 'CONTROL SYSTEM & VIDEO PROCESSOR', '', ''],
-          ['1', 'Recommended Primary Controller', c.controller, 'Units'],
+          ['B', 'CONTROL SYSTEM & VIDEO PROCESSOR (DUAL BRAND)', '', ''],
+          ['1', 'NovaStar Primary Recommendation', c.novaController, 'Units'],
+          ['2', 'Huidu Primary Recommendation', c.hdController, 'Units'],
           ['', '', '', ''],
           ['C', 'ELECTRICAL LOAD ENGINEERING (IEC STANDARD)', '', ''],
           ['1', 'Max Real Power AC (100% White Test)', `${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} Watts)`, 'kW'],
@@ -1687,8 +1757,9 @@
           ['9', 'Total Akumulasi Dot Piksel Riil', `${c.totalPixels.toLocaleString(locale)} (${c.megapixels} MP)`, 'Dots'],
           ['10', 'Aspek Rasio Layar Presisi', `${c.aspectRatio.fraction} (${c.aspectRatio.decimal}:1) - ${c.aspectRatio.standardName}`, 'Rasio'],
           ['', '', '', ''],
-          ['B', 'SISTEM KONTROL & VIDEO PROCESSOR', '', ''],
-          ['1', 'Rekomendasi Controller Utama', c.controller, 'Unit'],
+          ['B', 'SISTEM KONTROL & VIDEO PROCESSOR (DUAL BRAND)', '', ''],
+          ['1', 'Rekomendasi Controller NovaStar', c.novaController, 'Unit'],
+          ['2', 'Rekomendasi Controller Huidu (HD)', c.hdController, 'Unit'],
           ['', '', '', ''],
           ['C', 'SPESIFIKASI DAYA LISTRIK & KELISTRIKAN (STANDAR IEC)', '', ''],
           ['1', 'Konsumsi Daya Nyata AC Max (100% Putih)', `${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} Watt)`, 'kW'],
@@ -1742,8 +1813,9 @@
 • *屏幕实际尺寸:* ${c.widthCm} x ${c.heightCm} 厘米 (${c.actualWidthM.toFixed(2)} x ${c.actualHeightM.toFixed(2)} 米)
 • *屏幕总面积:* ${c.totalAreaSqm.toFixed(2)} m²
 
-*推荐视频处理器:*
-• ${c.controller}
+*推荐视频处理器与控制系统方案:*
+• *NovaStar:* ${c.novaController}
+• *灰度科技 (Huidu):* ${c.hdController}
 
 *电力工程负荷计算 (IEC 国际标准):*
 • *峰值有功功率 (Max AC):* ${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} W / ${c.maxVA.toLocaleString(locale)} VA)
@@ -1777,8 +1849,9 @@ _由 MBONG CALCULATOR PRO 自动生成_
 • *Actual Physical Size:* ${c.widthCm} x ${c.heightCm} cm (${c.actualWidthM.toFixed(2)} x ${c.actualHeightM.toFixed(2)} m)
 • *Total Surface Area:* ${c.totalAreaSqm.toFixed(2)} m²
 
-*RECOMMENDED VIDEO PROCESSOR:*
-• ${c.controller}
+*RECOMMENDED CONTROLLER & VIDEO PROCESSOR:*
+• *NovaStar:* ${c.novaController}
+• *Huidu (HD):* ${c.hdController}
 
 *ELECTRICAL LOAD ENGINEERING (IEC STANDARD):*
 • *Peak Power (Max AC):* ${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} W / ${c.maxVA.toLocaleString(locale)} VA)
@@ -1812,8 +1885,9 @@ _Generated via MBONG CALCULATOR PRO_
 • *Ukuran Riil Layar:* ${c.widthCm} x ${c.heightCm} cm (${c.actualWidthM.toFixed(2)} x ${c.actualHeightM.toFixed(2)} m)
 • *Luas Area:* ${c.totalAreaSqm.toFixed(2)} m²
 
-*REKOMENDASI VIDEO PROCESSOR:*
-• ${c.controller}
+*REKOMENDASI CONTROLLER & PROCESSOR:*
+• *NovaStar:* ${c.novaController}
+• *Huidu (HD):* ${c.hdController}
 
 *REKAYASA DAYA LISTRIK (STANDAR IEC):*
 • *Daya Puncak (Max AC):* ${c.maxPowerKW} kW (${c.maxPowerWatts.toLocaleString(locale)} W / ${c.maxVA.toLocaleString(locale)} VA)
