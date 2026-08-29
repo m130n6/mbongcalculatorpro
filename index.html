@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MBONG CALCULATOR PRO - Precision Engineering V2.6</title>
+  <title>MBONG CALCULATOR PRO - Precision Engineering V3.3</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -52,7 +52,6 @@
   <header class="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md sticky top-0 z-30 px-4 py-3.5">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <!-- Logo Header Interaktif -->
         <button type="button" onclick="openProfileModal()" class="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-500/80 hover:border-amber-400 bg-slate-950 shadow-lg shadow-amber-500/20 transition transform active:scale-95 group focus:outline-none flex items-center justify-center flex-shrink-0" title="Profile Picture">
           <img id="main-profile-img" src="https://lh3.googleusercontent.com/d/10uMkYanCm9dP1hFS6FOVtvlZYi4oFhpV" alt="Avatar Profil" class="w-full h-full object-cover group-hover:scale-110 transition duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
         </button>
@@ -61,7 +60,7 @@
             MBONG CALCULATOR PRO
           </h1>
           <span class="hidden sm:inline text-slate-600">|</span>
-          <p id="t-subtitle" class="hidden sm:block text-[11px] text-slate-400 font-medium">Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron</p>
+          <p id="t-subtitle" class="hidden sm:block text-[11px] text-slate-400 font-medium">Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron V3.3</p>
         </div>
       </div>
 
@@ -194,33 +193,33 @@
           </div>
         </div>
 
-        <!-- Card Rekomendasi Controller -->
+        <!-- Card Rekomendasi Controller (Akurat NovaStar & Huidu) -->
         <div class="glass-card p-5 rounded-2xl shadow-xl space-y-4 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-cyan-500/10 hover:-translate-y-1">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-            <h2 id="t-proc-title" class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2"><span>🎛️</span> Rekomendasi Controller & Video Processor</h2>
+            <h2 id="t-proc-title" class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2"><span>🎛️</span> Rekomendasi Controller & Video Processor Pro</h2>
             <span id="proc-port-badge" class="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded font-mono font-bold">-</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-            <!-- Box NovaStar -->
+            <!-- Box NovaStar (Diperketat & Akurat) -->
             <div class="bg-slate-950/80 hover:bg-slate-900/80 transition-all p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/10 space-y-2.5 relative overflow-hidden flex flex-col justify-between">
-              <div class="absolute -right-6 top-4 bg-cyan-500 text-slate-950 text-[9px] font-black px-6 py-0.5 rotate-45 shadow">VX & Async</div>
+              <div class="absolute -right-6 top-4 bg-cyan-500 text-slate-950 text-[9px] font-black px-6 py-0.5 rotate-45 shadow">VX & H-Series</div>
               <div>
                 <div class="flex items-center justify-between border-b border-slate-800/80 pb-2 pr-6">
                   <span class="font-bold text-cyan-300 flex items-center gap-1.5 text-xs"><span>🌟</span> NovaStar </span>
                   <span id="out-nova-load-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">-</span>
                 </div>
                 <div class="mt-2.5">
-                  <div class="text-[10px] text-slate-400" id="t-nova-main-lbl">Tipe Controller Utama (Disarankan):</div>
+                  <div class="text-[10px] text-slate-400" id="t-nova-main-lbl">Tipe Controller Utama (All-in-One):</div>
                   <div id="out-nova-main" class="text-sm font-extrabold text-white font-mono mt-0.5 leading-tight">-</div>
                 </div>
                 <div class="text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/50 mt-2">
-                  <span id="t-nova-spec-lbl" class="block mb-1 text-slate-500 font-medium">Spesifikasi Controller:</span> 
+                  <span id="t-nova-spec-lbl" class="block mb-1 text-slate-500 font-medium">Batas Resolusi Hardware:</span> 
                   <strong id="out-nova-cap" class="text-cyan-300 font-mono block leading-relaxed">-</strong>
                 </div>
               </div>
               <div class="pt-2 border-t border-slate-800/60 text-[11px] mt-2">
-                <span id="t-nova-alt-lbl" class="text-slate-500">Alternatif Seri Async (Standalone):</span>
+                <span id="t-nova-alt-lbl" class="text-slate-500">Alternatif Seri Modular / Splicer:</span>
                 <div id="out-nova-alt" class="text-amber-300 font-mono mt-0.5 font-bold">-</div>
               </div>
             </div>
@@ -233,16 +232,16 @@
                   <span id="out-hd-load-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">-</span>
                 </div>
                 <div class="mt-2.5">
-                  <div class="text-[10px] text-slate-400" id="t-hd-main-lbl">Tipe Controller Utama (Disarankan):</div>
+                  <div class="text-[10px] text-slate-400" id="t-hd-main-lbl">Tipe Controller Utama (All-in-One):</div>
                   <div id="out-hd-main" class="text-sm font-extrabold text-white font-mono mt-0.5 leading-tight">-</div>
                 </div>
                 <div class="text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/50 mt-2">
-                  <span id="t-hd-spec-lbl" class="block mb-1 text-slate-500 font-medium">Spesifikasi Controller:</span> 
+                  <span id="t-hd-spec-lbl" class="block mb-1 text-slate-500 font-medium">Batas Resolusi Hardware:</span> 
                   <strong id="out-hd-cap" class="text-amber-300 font-mono block leading-relaxed">-</strong>
                 </div>
               </div>
               <div class="pt-2 border-t border-slate-800/60 text-[11px] mt-2">
-                <span id="t-hd-alt-lbl" class="text-slate-500">Alternatif Seri Async (Standalone):</span>
+                <span id="t-hd-alt-lbl" class="text-slate-500">Alternatif Seri Dual-Mode / Splicer:</span>
                 <div id="out-hd-alt" class="text-amber-300 font-mono mt-0.5 font-bold">-</div>
               </div>
             </div>
@@ -253,17 +252,17 @@
               <span id="t-lbl-proc-ports" class="text-slate-400">Total Kebutuhan Output Ethernet:</span>
               <strong id="out-proc-ports" class="text-cyan-300 font-mono ml-1">-</strong>
             </div>
-            <span id="t-lbl-proc-port-note" class="text-[10px] text-slate-500">(Maksimal 650.000 px / RJ45 Port)</span>
+            <span id="t-lbl-proc-port-note" class="text-[10px] text-slate-500">(Standar aman 650.000 px / RJ45 Port, dapat disesuaikan via Admin)</span>
           </div>
         </div>
 
         <!-- Card Elektrikal -->
         <div class="glass-card p-5 rounded-2xl shadow-xl space-y-4 transition-all duration-300 hover:border-amber-500/50 hover:shadow-amber-500/10 hover:-translate-y-1">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-            <h2 id="t-elec-title" class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2"><span>⚡</span> Rekayasa Daya (PLN Standard)</h2>
+            <h2 id="t-elec-title" class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2"><span>⚡</span> Rekayasa Daya (PLN Standard & PUIL)</h2>
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded font-mono">η = 88%</span>
-              <span class="text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded font-mono">Cos φ = 0.95</span>
+              <span class="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded font-mono">η = <span id="display-eff-val">88</span>%</span>
+              <span class="text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded font-mono">Cos φ = <span id="display-pf-val">0.95</span></span>
             </div>
           </div>
 
@@ -273,12 +272,14 @@
               <div class="text-base font-bold text-amber-400 font-mono mt-0.5">
                 <span id="out-power-max-kw">-</span> kW <span class="text-[10px] text-slate-400 font-normal">(<span id="out-power-max-w">-</span> W)</span>
               </div>
+              <div class="text-[10px] text-slate-500 mt-1" id="t-lbl-area-watt">Estimasi Beban Per Meter Persegi: <span id="out-watt-sqm" class="text-slate-300">-</span> W/m²</div>
             </div>
             <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800">
-              <div id="t-lbl-power-avg" class="text-[10px] text-slate-400">Daya AC Rata-Rata (~35% Video):</div>
+              <div id="t-lbl-power-avg" class="text-[10px] text-slate-400">Daya AC Rata-Rata (~33% Konten Video):</div>
               <div class="text-base font-bold text-emerald-400 font-mono mt-0.5">
                 <span id="out-power-avg-kw">-</span> kW <span class="text-[10px] text-slate-400 font-normal">(<span id="out-power-avg-w">-</span> W)</span>
               </div>
+              <div class="text-[10px] text-slate-500 mt-1" id="t-lbl-apparent">Apparent Power (Daya Semu): <span id="out-va-max" class="text-slate-300">-</span> VA</div>
             </div>
           </div>
 
@@ -297,7 +298,7 @@
                   <span id="t-lbl-1p-mcb">Rekomendasi MCB:</span>
                   <strong id="out-mcb-1p" class="font-mono text-xs bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">-</strong>
                 </div>
-                <div class="flex justify-between text-slate-400 pt-1 border-t border-slate-800/60 text-[11px]">
+                <div class="flex justify-between text-slate-400 pt-1 border-t border-slate-800/60 text-[11px] mt-1.5">
                   <span id="t-lbl-1p-cable">Kabel (Cu/PVC):</span>
                   <span id="out-cable-1p" class="text-cyan-300 font-mono">-</span>
                 </div>
@@ -318,16 +319,16 @@
                   <span id="t-lbl-3p-mcb">Rekomendasi MCB:</span>
                   <strong id="out-mcb-3p" class="font-mono text-xs bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/50 text-amber-300">-</strong>
                 </div>
-                <div class="flex justify-between text-slate-400 pt-1 border-t border-slate-800/60 text-[11px]">
+                <div class="flex justify-between text-slate-400 pt-1 border-t border-slate-800/60 text-[11px] mt-1.5">
                   <span id="t-lbl-3p-cable">Kabel (Cu/PVC):</span>
                   <span id="out-cable-3p" class="text-cyan-300 font-mono">-</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="p-3 bg-slate-950/90 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between text-xs">
-            <span id="t-lbl-genset" class="text-slate-400">Rekomendasi Kapasitas Genset Min:</span>
-            <strong id="out-genset" class="text-amber-300 font-mono font-bold">-</strong>
+          <div class="p-3 bg-slate-950/90 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row justify-between text-xs items-center">
+            <span id="t-lbl-genset" class="text-slate-400">Kapasitas Genset Cadangan Min (Buffer 25%):</span>
+            <strong id="out-genset" class="text-amber-300 font-mono font-bold text-sm bg-slate-950 px-3 py-1 rounded border border-slate-700">-</strong>
           </div>
         </div>
 
@@ -356,7 +357,6 @@
           </div>
           <div class="pt-3 border-t border-slate-800 flex flex-wrap gap-2">
             <button type="button" onclick="openExportCodeModal()" class="py-2 px-3 bg-cyan-950 hover:bg-cyan-900 border border-cyan-500/50 text-cyan-300 rounded-xl text-xs font-semibold">Ekspor HTML</button>
-            <button type="button" onclick="exportDataJSON()" class="py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 rounded-xl text-xs font-semibold">Unduh JSON</button>
           </div>
         </div>
 
@@ -374,9 +374,19 @@
 
   <!-- Modals -->
   <div id="profile-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden" onclick="closeProfileModal()">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl max-w-sm w-full flex flex-col items-center space-y-4" onclick="event.stopPropagation()">
-      <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-amber-400"><img id="modal-profile-img" src="https://lh3.googleusercontent.com/d/10uMkYanCm9dP1hFS6FOVtvlZYi4oFhpV" class="w-full h-full object-cover"></div>
-      <button onclick="closeProfileModal()" class="text-slate-400 hover:text-white text-xs px-2 py-1 bg-slate-800 rounded-lg">Tutup</button>
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl max-w-sm w-full flex flex-col items-center space-y-5" onclick="event.stopPropagation()">
+      <h3 id="t-prof-title" class="text-sm font-bold text-white tracking-wider flex items-center gap-2">👑 PROFIL KONSULTAN</h3>
+      <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-emerald-500 shadow-lg shadow-emerald-500/20 bg-slate-950">
+        <img id="modal-profile-img" src="https://lh3.googleusercontent.com/d/10uMkYanCm9dP1hFS6FOVtvlZYi4oFhpV" class="w-full h-full object-cover">
+      </div>
+      <div class="text-center space-y-1">
+        <h4 class="text-xl font-black text-emerald-400">Bang Mbong</h4>
+        <p id="t-prof-desc" class="text-xs text-slate-400 font-medium">Videotron Engineer & Consultant</p>
+      </div>
+      <a href="https://wa.me/628158855537?text=Halo%20Bang%20Mbong,%20saya%20mau%20bertanya%20tentang%20videotron" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition transform hover:-translate-y-1 shadow-lg shadow-emerald-500/20 active:scale-95">
+        <span class="text-lg">💬</span> <span id="t-prof-wa">Hubungi via WhatsApp</span>
+      </a>
+      <button onclick="closeProfileModal()" id="t-prof-close" class="text-slate-400 hover:text-white text-xs px-4 py-2 bg-slate-800 hover:bg-slate-700 transition rounded-xl w-full font-semibold">Tutup</button>
     </div>
   </div>
 
@@ -410,30 +420,32 @@
     let currentUnit = 'cm';
     let isAdmin = false;
 
-    // Database Modul
+    // Database Modul (Akurasi Tinggi Pixel & Daya DC Maksimal per Modul)
     const LED_MODULE_DATABASE = {
+      "0.9":      { widthMm: 320, heightMm: 160, pixelW: 356, pixelH: 178, maxWattsDC: 32.0, type: 'indoor' },
       "1.25":     { widthMm: 320, heightMm: 160, pixelW: 256, pixelH: 128, maxWattsDC: 28.0, type: 'indoor' },
       "1.538":    { widthMm: 320, heightMm: 160, pixelW: 208, pixelH: 104, maxWattsDC: 26.0, type: 'indoor' },
       "1.86":     { widthMm: 320, heightMm: 160, pixelW: 172, pixelH: 86,  maxWattsDC: 24.0, type: 'indoor' },
       "2.0":      { widthMm: 320, heightMm: 160, pixelW: 160, pixelH: 80,  maxWattsDC: 22.0, type: 'indoor' },
       "2.5":      { widthMm: 320, heightMm: 160, pixelW: 128, pixelH: 64,  maxWattsDC: 20.0, type: 'indoor' },
       "2.604":    { widthMm: 250, heightMm: 250, pixelW: 96,  pixelH: 96,  maxWattsDC: 30.0, type: 'indoor' },
-      "2.976":    { widthMm: 500, heightMm: 500, pixelW: 168, pixelH: 168, maxWattsDC: 120.0, type: 'indoor' }, 
+      "2.976":    { widthMm: 500, heightMm: 500, pixelW: 168, pixelH: 168, maxWattsDC: 125.0, type: 'indoor' }, 
       "3.076-in": { widthMm: 320, heightMm: 160, pixelW: 104, pixelH: 52,  maxWattsDC: 18.0, type: 'indoor' },
-      "3.076-out":{ widthMm: 320, heightMm: 160, pixelW: 104, pixelH: 52,  maxWattsDC: 38.0, type: 'outdoor' },
-      "3.91-in":  { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 125.0, type: 'indoor' },
-      "3.91-out": { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 200.0, type: 'outdoor' },
+      "3.076-out":{ widthMm: 320, heightMm: 160, pixelW: 104, pixelH: 52,  maxWattsDC: 42.0, type: 'outdoor' },
+      "3.91-in":  { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 130.0, type: 'indoor' },
+      "3.91-out": { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 220.0, type: 'outdoor' },
       "4.0-in":   { widthMm: 320, heightMm: 160, pixelW: 80,  pixelH: 40,  maxWattsDC: 16.0, type: 'indoor' },
-      "4.0-out":  { widthMm: 320, heightMm: 160, pixelW: 80,  pixelH: 40,  maxWattsDC: 40.0, type: 'outdoor' },
+      "4.0-out":  { widthMm: 320, heightMm: 160, pixelW: 80,  pixelH: 40,  maxWattsDC: 45.0, type: 'outdoor' },
       "5.0-in":   { widthMm: 320, heightMm: 160, pixelW: 64,  pixelH: 32,  maxWattsDC: 15.0, type: 'indoor' },
-      "5.0-out":  { widthMm: 320, heightMm: 160, pixelW: 64,  pixelH: 32,  maxWattsDC: 42.0, type: 'outdoor' },
-      "6.0":      { widthMm: 192, heightMm: 192, pixelW: 32,  pixelH: 32,  maxWattsDC: 32.0, type: 'outdoor' },
-      "8.0-out":  { widthMm: 320, heightMm: 160, pixelW: 40,  pixelH: 20,  maxWattsDC: 40.0, type: 'outdoor' },
-      "10.0-out": { widthMm: 320, heightMm: 160, pixelW: 32,  pixelH: 16,  maxWattsDC: 38.0, type: 'outdoor' }
+      "5.0-out":  { widthMm: 320, heightMm: 160, pixelW: 64,  pixelH: 32,  maxWattsDC: 48.0, type: 'outdoor' },
+      "6.0":      { widthMm: 192, heightMm: 192, pixelW: 32,  pixelH: 32,  maxWattsDC: 35.0, type: 'outdoor' },
+      "8.0-out":  { widthMm: 320, heightMm: 160, pixelW: 40,  pixelH: 20,  maxWattsDC: 45.0, type: 'outdoor' },
+      "10.0-out": { widthMm: 320, heightMm: 160, pixelW: 32,  pixelH: 16,  maxWattsDC: 42.0, type: 'outdoor' }
     };
 
     const MODULE_NAMES = {
       id: {
+        "0.9": "P0.9 - Micro LED / CoB Ultra HD (Indoor, 320×160mm)",
         "1.25": "P1.25 - Ultra Fine HD (Indoor, 320×160mm)",
         "1.538": "P1.538 - Ultra Fine (Indoor, 320×160mm)",
         "1.86": "P1.86 - Command Center (Indoor, 320×160mm)",
@@ -454,6 +466,7 @@
         "10.0-out": "P10.0 - Billboard Jarak Jauh (Outdoor, 320×160mm)"
       },
       en: {
+        "0.9": "P0.9 - Micro LED / CoB Ultra HD (Indoor, 320×160mm)",
         "1.25": "P1.25 - Ultra Fine HD (Indoor, 320×160mm)",
         "1.538": "P1.538 - Ultra Fine (Indoor, 320×160mm)",
         "1.86": "P1.86 - Command Center (Indoor, 320×160mm)",
@@ -474,6 +487,7 @@
         "10.0-out": "P10.0 - Long Distance Billboard (Outdoor, 320×160mm)"
       },
       zh: {
+        "0.9": "P0.9 - 微间距CoB超高清 (室内, 320×160mm)",
         "1.25": "P1.25 - 超微高清 (室内, 320×160mm)",
         "1.538": "P1.538 - 超高清 (室内, 320×160mm)",
         "1.86": "P1.86 - 指控中心 (室内, 320×160mm)",
@@ -495,10 +509,9 @@
       }
     };
 
-    // Kamus Terjemahan Teks Layar
     const DICTIONARY = {
       id: {
-        subtitle: "Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron",
+        subtitle: "Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron V3.3",
         dim_title: "Dimensi & Modul LED",
         pitch_label: "Pixel Pitch & Tipe Modul",
         width_label: "Lebar Layar (Target)",
@@ -511,25 +524,31 @@
         total_px: "Total Kerapatan Pixel:",
         exact_ratio: "Rasio Aktual Matematis:",
         ratio_status: "Kecocokan Sumber Video:",
-        proc_title: "Rekomendasi Controller & Video Processor",
-        main_lbl: "Tipe Controller Utama (Disarankan):",
-        spec_lbl: "Spesifikasi Controller:",
-        alt_lbl: "Alternatif Seri Async (Standalone):",
+        proc_title: "Rekomendasi Controller & Video Processor Pro",
+        main_lbl: "Tipe Controller Utama (All-in-One):",
+        spec_lbl: "Batas Resolusi Hardware:",
+        alt_lbl: "Alternatif Seri Modular / Splicer:",
         ports: "Total Kebutuhan Output Ethernet:",
-        port_note: "(Maksimal 650.000 px / RJ45 Port)",
-        elec_title: "Rekayasa Daya (PLN Standard)",
+        port_note: "(Standar aman 650.000 px / RJ45 Port, dapat disesuaikan via Admin)",
+        elec_title: "Rekayasa Daya (PLN Standard & PUIL)",
         power_max: "Daya AC Maksimal (100% Full White):",
-        power_avg: "Daya AC Rata-Rata (~35% Video):",
+        power_avg: "Daya AC Rata-Rata (~33% Konten Video):",
         p1_head: "🔌 1 Fasa (220V AC)",
         p3_head: "⚡ 3 Fasa (380V AC)",
         cur: "Arus Beban Nyata (Ib):",
         cur3: "Arus per Fasa (Ib):",
         mcb: "Rekomendasi MCB:",
         cable: "Kabel (Cu/PVC):",
-        genset: "Rekomendasi Kapasitas Genset Min:"
+        genset: "Kapasitas Genset Cadangan Min (Buffer 25%):",
+        area_watt: "Estimasi Beban Per Meter Persegi: ",
+        apparent: "Apparent Power (Daya Semu): ",
+        prof_title: "👑 PROFIL KONSULTAN",
+        prof_desc: "Videotron Engineer & Consultant",
+        prof_wa: "Hubungi via WhatsApp",
+        prof_close: "Tutup"
       },
       en: {
-        subtitle: "Resolution, Video Processor & Power Engineering System",
+        subtitle: "Resolution, Video Processor & Power Engineering System V3.3",
         dim_title: "Dimensions & LED Module",
         pitch_label: "Pixel Pitch & Module Type",
         width_label: "Target Width",
@@ -542,25 +561,31 @@
         total_px: "Total Pixel Density:",
         exact_ratio: "Exact Mathematical Ratio:",
         ratio_status: "Video Source Compatibility:",
-        proc_title: "Controller & Video Processor",
-        main_lbl: "Main Controller (Recommended):",
-        spec_lbl: "Controller Specification:",
-        alt_lbl: "Async Series Alternative (Standalone):",
+        proc_title: "Pro Controller & Video Processor",
+        main_lbl: "Main Controller (All-in-One):",
+        spec_lbl: "Hardware Resolution Limit:",
+        alt_lbl: "Modular / Splicer Alternative Series:",
         ports: "Total Ethernet Output Required:",
-        port_note: "(Max 650,000 px / RJ45 Port)",
-        elec_title: "Power Engineering (Standard)",
+        port_note: "(Safe standard 650,000 px / RJ45 Port, customizable via Admin)",
+        elec_title: "Power Engineering (Standard & PUIL)",
         power_max: "Max AC Power (100% Full White):",
-        power_avg: "Average AC Power (~35% Video):",
+        power_avg: "Average AC Power (~33% Video Content):",
         p1_head: "🔌 Single Phase (220V AC)",
         p3_head: "⚡ Three Phase (380V AC)",
         cur: "Actual Load Current (Ib):",
         cur3: "Current per Phase (Ib):",
         mcb: "Recommended MCB:",
         cable: "Cable (Cu/PVC):",
-        genset: "Min. Recommended Genset Capacity:"
+        genset: "Min. Standby Genset Capacity (25% Buffer):",
+        area_watt: "Estimated Load Per Square Meter: ",
+        apparent: "Apparent Power: ",
+        prof_title: "👑 CONSULTANT PROFILE",
+        prof_desc: "Videotron Engineer & Consultant",
+        prof_wa: "Contact via WhatsApp",
+        prof_close: "Close"
       },
       zh: {
-        subtitle: "LED屏幕分辨率、视频处理器与电力工程计算系统",
+        subtitle: "LED屏幕分辨率、视频处理器与电力工程计算系统 V3.3",
         dim_title: "尺寸与LED模组",
         pitch_label: "像素间距与模组类型",
         width_label: "目标宽度",
@@ -573,49 +598,52 @@
         total_px: "总像素密度:",
         exact_ratio: "精确数学比例:",
         ratio_status: "视频源兼容性:",
-        proc_title: "控制器与视频处理器推荐",
-        main_lbl: "主控制器 (推荐):",
-        spec_lbl: "控制器规格:",
-        alt_lbl: "异步系列替代方案 (独立):",
+        proc_title: "专业控制器与视频处理器推荐",
+        main_lbl: "主控制器 (一体机):",
+        spec_lbl: "硬件分辨率限制:",
+        alt_lbl: "模块化/拼控系列替代方案:",
         ports: "总以太网输出需求:",
-        port_note: "(每个RJ45端口最大65万像素)",
-        elec_title: "电力负荷计算 (标准)",
+        port_note: "(每个RJ45端口安全标准65万像素，可通过管理菜单自定义)",
+        elec_title: "电力负荷计算 (标准规范)",
         power_max: "最大交流功率 (100%全白):",
-        power_avg: "平均交流功率 (~35%视频):",
+        power_avg: "平均交流功率 (~33%视频内容):",
         p1_head: "🔌 单相 (220V AC)",
         p3_head: "⚡ 三相 (380V AC)",
         cur: "实际负载电流 (Ib):",
         cur3: "每相电流 (Ib):",
         mcb: "推荐断路器 (MCB):",
         cable: "电缆 (铜芯/PVC):",
-        genset: "最低推荐发电机容量:"
+        genset: "最低备用发电机容量 (25% 缓冲):",
+        area_watt: "每平方米预估负荷: ",
+        apparent: "视在功率 (VA): ",
+        prof_title: "👑 顾问简介",
+        prof_desc: "LED显示屏工程师和顾问",
+        prof_wa: "通过WhatsApp联系",
+        prof_close: "关闭"
       }
     };
 
-    // Database Processor (NovaStar VX & Async)
+    // Database Processor NovaStar yang Sesuai Spesifikasi Resmi Pabrikan (Kapasitas & Batas Resolusi Width/Height)
     const NOVASTAR_PROCESSORS = [
-      { name: "Novastar TB30 (Async Player)", maxPx: 650000, maxW: 4096, maxH: 4096, ports: 2, alt: "Novastar TB1-4G / TB2-4G (Async)" },
-      { name: "Novastar VX400 / TB40 (Async)", maxPx: 1300000, maxW: 5120, maxH: 5120, ports: 2, alt: "Novastar TB50 (Async Dual-Mode)" },
-      { name: "Novastar VX400s-N / TB60 (Async)", maxPx: 2300000, maxW: 3840, maxH: 3840, ports: 4, alt: "Novastar TU15 Pro (Async Playback)" },
-      { name: "Novastar VX600 (All-in-One)", maxPx: 3900000, maxW: 10240, maxH: 8192, ports: 6, alt: "2x Novastar TB60 Cascade (Async)" },
-      { name: "Novastar VX1000 (All-in-One)", maxPx: 6500000, maxW: 10240, maxH: 8192, ports: 10, alt: "3x Novastar TB60 Cascade (Async)" },
-      { name: "Novastar VX16s (All-in-One)", maxPx: 10400000, maxW: 15360, maxH: 15360, ports: 16, alt: "Multi-Taurus TB60 Cluster (Async)" },
-      { name: "NovaStar H-Series (Splicer)", maxPx: 99999999, maxW: 64000, maxH: 32000, ports: 99, alt: "Multi-Taurus TB60 Cluster (Async)" }
+      { name: "Novastar TB30 (Multimedia Player)", maxPx: 650000, maxW: 4096, maxH: 4096, ports: 2, alt: "Novastar TB40 / TB50 (Async)" },
+      { name: "Novastar VX400 (All-in-One Controller)", maxPx: 2600000, maxW: 10240, maxH: 4096, ports: 4, alt: "Novastar TB60 (Async) / VX600" },
+      { name: "Novastar VX600 (All-in-One Controller)", maxPx: 3900000, maxW: 10240, maxH: 8192, ports: 6, alt: "Novastar H2 Modular Video Wall Processor" },
+      { name: "Novastar VX1000 (All-in-One Controller)", maxPx: 6500000, maxW: 10240, maxH: 8192, ports: 10, alt: "Novastar H5 Modular Video Wall Processor" },
+      { name: "Novastar VX16s / NovaPro UHD Jr", maxPx: 10400000, maxW: 16384, maxH: 8192, ports: 16, alt: "Novastar H9 Modular Video Wall Splicer" },
+      { name: "Novastar VX2000 Pro / H15", maxPx: 13000000, maxW: 16384, maxH: 16384, ports: 20, alt: "Novastar H20 Massive Video Splicer Cluster" }
     ];
 
-    // Database Processor (Huidu VP & Async)
+    // Database Processor Huidu (Sesuai Spesifikasi Pabrikan)
     const HUIDU_PROCESSORS = [
       { name: "Huidu HD-A4 / A4L (Async)", maxPx: 655360, maxW: 16384, maxH: 2048, ports: 1, alt: "Huidu HD-C16C / A3 (Async)" },
-      { name: "Huidu HD-VP210 / VP210C", maxPx: 1300000, maxW: 3840, maxH: 1920, ports: 2, alt: "Huidu HD-A5 (Async Dual-Mode)" },
-      { name: "Huidu HD-VP410 / VP410C", maxPx: 2600000, maxW: 3840, maxH: 1920, ports: 4, alt: "Huidu HD-A6 (Async Dual-Mode)" },
-      { name: "Huidu HD-VP620 / VP630", maxPx: 3900000, maxW: 7680, maxH: 3840, ports: 6, alt: "Huidu HD-A8 (Async Dual-Mode)" },
-      { name: "Huidu HD-VP820 / VP830", maxPx: 5200000, maxW: 7680, maxH: 3840, ports: 8, alt: "Huidu HD-A8 (Async Dual-Mode)" },
-      { name: "Huidu HD-VP1220 / VP1240", maxPx: 7800000, maxW: 16000, maxH: 3840, ports: 12, alt: "2x Huidu HD-A8 Cascade (Async)" },
-      { name: "Huidu HD-VP1620 / VP1640", maxPx: 10400000, maxW: 16000, maxH: 3840, ports: 16, alt: "2x Huidu HD-A8 Cascade (Async)" },
-      { name: "Huidu Video Matrix Splicer", maxPx: 99999999, maxW: 64000, maxH: 32000, ports: 99, alt: "Cluster Huidu HD-A8 Cascade (Async)" }
+      { name: "Huidu HD-VP210 (All-in-One)", maxPx: 1300000, maxW: 3840, maxH: 1920, ports: 2, alt: "Huidu HD-A5 (Async Dual-Mode)" },
+      { name: "Huidu HD-VP410 (All-in-One)", maxPx: 2600000, maxW: 3840, maxH: 1920, ports: 4, alt: "Huidu HD-A6 (Async Dual-Mode)" },
+      { name: "Huidu HD-VP630 (All-in-One)", maxPx: 3900000, maxW: 7680, maxH: 3840, ports: 6, alt: "Huidu HD-A8 (Async 4K)" },
+      { name: "Huidu HD-VP830 (All-in-One)", maxPx: 5200000, maxW: 7680, maxH: 3840, ports: 8, alt: "Huidu HD-A8 (Async 4K)" },
+      { name: "Huidu HD-VP1240 (All-in-One)", maxPx: 7800000, maxW: 16000, maxH: 3840, ports: 12, alt: "Huidu HD-VP1640 (Splicer Pro)" },
+      { name: "Huidu HD-VP1640 (All-in-One Splicer)", maxPx: 10400000, maxW: 16000, maxH: 3840, ports: 16, alt: "Huidu Multi-Screen Splicer Cluster" }
     ];
 
-    // Logika Rekomendasi MCB & Kabel
     function getRecommendedMCB(safetyCurrent) {
       const standardMCBs = [2, 4, 6, 10, 16, 20, 25, 32, 40, 50, 63, 80, 100, 125, 160, 200, 250];
       for (let mcb of standardMCBs) {
@@ -624,28 +652,30 @@
       return Math.ceil(safetyCurrent);
     }
 
-    function getCableSize1P(mcbRating) {
-      if (mcbRating <= 10) return "3 × 1.5 mm² (Max 16A)";
-      if (mcbRating <= 16) return "3 × 2.5 mm² (Max 24A)";
-      if (mcbRating <= 25) return "3 × 4.0 mm² (Max 32A)";
-      if (mcbRating <= 32) return "3 × 6.0 mm² (Max 44A)";
-      if (mcbRating <= 50) return "3 × 10.0 mm² (Max 61A)";
-      if (mcbRating <= 63) return "3 × 16.0 mm² (Max 82A)";
-      if (mcbRating <= 80) return "3 × 25.0 mm² (Max 108A)";
-      if (mcbRating <= 100) return "3 × 35.0 mm² (Max 135A)";
-      return "Hubungi Teknisi Elektrikal";
+    function getCableSize1P(mcb) {
+      if (mcb <= 10) return "3 × 1.5 mm² (KHA ~15A)";
+      if (mcb <= 16) return "3 × 2.5 mm² (KHA ~20A)";
+      if (mcb <= 25) return "3 × 4.0 mm² (KHA ~27A)";
+      if (mcb <= 32) return "3 × 6.0 mm² (KHA ~36A)";
+      if (mcb <= 40) return "3 × 10.0 mm² (KHA ~50A)";
+      if (mcb <= 63) return "3 × 16.0 mm² (KHA ~68A)";
+      if (mcb <= 80) return "3 × 25.0 mm² (KHA ~89A)";
+      if (mcb <= 100) return "3 × 35.0 mm² (KHA ~111A)";
+      if (mcb <= 125) return "3 × 50.0 mm² (KHA ~134A)";
+      return "Hubungi Teknisi / Panel Distribusi";
     }
 
-    function getCableSize3P(mcbRating) {
-      if (mcbRating <= 10) return "5 × 1.5 mm² (Max 16A)";
-      if (mcbRating <= 16) return "5 × 2.5 mm² (Max 24A)";
-      if (mcbRating <= 25) return "5 × 4.0 mm² (Max 32A)";
-      if (mcbRating <= 32) return "5 × 6.0 mm² (Max 44A)";
-      if (mcbRating <= 50) return "5 × 10.0 mm² (Max 60A)";
-      if (mcbRating <= 63) return "5 × 16.0 mm² (Max 80A)";
-      if (mcbRating <= 80) return "5 × 25.0 mm² (Max 105A)";
-      if (mcbRating <= 100) return "5 × 35.0 mm² (Max 130A)";
-      return "Hubungi Teknisi Elektrikal";
+    function getCableSize3P(mcb) {
+      if (mcb <= 10) return "5 × 1.5 mm² (KHA ~15A)";
+      if (mcb <= 16) return "5 × 2.5 mm² (KHA ~20A)";
+      if (mcb <= 25) return "5 × 4.0 mm² (KHA ~27A)";
+      if (mcb <= 32) return "5 × 6.0 mm² (KHA ~36A)";
+      if (mcb <= 40) return "5 × 10.0 mm² (KHA ~50A)";
+      if (mcb <= 63) return "5 × 16.0 mm² (KHA ~68A)";
+      if (mcb <= 80) return "5 × 25.0 mm² (KHA ~89A)";
+      if (mcb <= 100) return "5 × 35.0 mm² (KHA ~111A)";
+      if (mcb <= 125) return "5 × 50.0 mm² (KHA ~134A)";
+      return "Hubungi Teknisi / Panel Distribusi";
     }
 
     function populatePitchOptions() {
@@ -719,6 +749,13 @@
       document.getElementById('t-lbl-3p-cable').innerText = dict.cable;
       
       document.getElementById('t-lbl-genset').innerText = dict.genset;
+      document.getElementById('t-lbl-area-watt').innerHTML = `${dict.area_watt} <span id="out-watt-sqm" class="text-slate-300">-</span> W/m²`;
+      document.getElementById('t-lbl-apparent').innerHTML = `${dict.apparent} <span id="out-va-max" class="text-slate-300">-</span> VA`;
+
+      document.getElementById('t-prof-title').innerHTML = `👑 ${dict.prof_title}`;
+      document.getElementById('t-prof-desc').innerText = dict.prof_desc;
+      document.getElementById('t-prof-wa').innerText = dict.prof_wa;
+      document.getElementById('t-prof-close').innerText = dict.prof_close;
 
       populatePitchOptions();
       calculate();
@@ -727,41 +764,53 @@
       showToast(toastMsg);
     }
 
+    // Fungsi Pencocokan Processor yang Akurat Berdasarkan Kapasitas Piksel & Batas Resolusi Width/Height
     function getAccurateProcessorRecommendations(totalW, totalH, totalPx) {
       const portCap = parseFloat(document.getElementById('adm-port-cap')?.value) || 650000;
       const reqPorts = Math.max(1, Math.ceil(totalPx / portCap));
 
-      // Iterasi NovaStar
-      let nova = NOVASTAR_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH) || NOVASTAR_PROCESSORS[NOVASTAR_PROCESSORS.length-1];
+      let capLblL = currentLang === 'zh' ? '最大宽' : 'Max W';
+      let capLblT = currentLang === 'zh' ? '最大高' : 'Max H';
+
+      // Pencocokan NovaStar yang Ketat & Sesuai Spesifikasi Asli
+      let n_main, n_alt, n_capText, n_load;
+      let n_match = NOVASTAR_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
+      if(n_match) {
+        n_main = n_match.name; n_alt = n_match.alt;
+        n_capText = `Max ${(n_match.maxPx/1000000).toFixed(1)}M px (${capLblL}: ${n_match.maxW}px, ${capLblT}: ${n_match.maxH}px)`;
+        n_load = Math.min(100, Math.round((totalPx / n_match.maxPx) * 100));
+      } else {
+        // Jika melebihi kapasitas standar single unit, arahkan ke Novastar H-Series / Splicer Modular
+        let count = Math.ceil(totalPx / 13000000);
+        n_main = `${count}x Novastar H15 / H20 (Modular Video Splicer)`;
+        n_alt = `Novastar Distributed Video Wall System / MCH System`;
+        n_capText = currentLang === 'zh' ? "超大分辨率级联拼接系统" : "Ultra-Large Resolution Splicer System";
+        n_load = '-';
+      }
       
-      // Iterasi Huidu
-      let hd = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH) || HUIDU_PROCESSORS[HUIDU_PROCESSORS.length-1];
+      // Pencocokan Huidu
+      let h_main, h_alt, h_capText, h_load;
+      let h_match = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
+      if(h_match) {
+        h_main = h_match.name; h_alt = h_match.alt;
+        h_capText = `Max ${(h_match.maxPx/1000000).toFixed(1)}M px (${capLblL}: ${h_match.maxW}px, ${capLblT}: ${h_match.maxH}px)`;
+        h_load = Math.min(100, Math.round((totalPx / h_match.maxPx) * 100));
+      } else {
+        let count = Math.ceil(totalPx / 10400000);
+        h_main = `${count}x Huidu HD-VP1640 (Cascade Splicer)`;
+        h_alt = `Multi-Controller Splicer Cluster`;
+        h_capText = currentLang === 'zh' ? "无限扩展级联" : "Unlimited Expansion (Cascade System)";
+        h_load = '-';
+      }
 
-      let capLblW = currentLang === 'zh' ? '最大宽' : 'Max Width';
-      let capLblH = currentLang === 'zh' ? '最大高' : 'Max Height';
-
-      return {
-        reqPorts,
-        nova: {
-          main: nova.name,
-          alt: nova.alt,
-          capText: `Max ${(nova.maxPx/1000000).toFixed(1)}M px (${capLblW}: ${nova.maxW}px, ${capLblH}: ${nova.maxH}px)`,
-          load: nova.maxPx >= 99999999 ? '-' : Math.min(100, Math.round((totalPx / nova.maxPx) * 100))
-        },
-        hd: {
-          main: hd.name,
-          alt: hd.alt,
-          capText: `Max ${(hd.maxPx/1000000).toFixed(1)}M px (${capLblW}: ${hd.maxW}px, ${capLblH}: ${hd.maxH}px)`,
-          load: hd.maxPx >= 99999999 ? '-' : Math.min(100, Math.round((totalPx / hd.maxPx) * 100))
-        }
-      };
+      return { reqPorts, nova: { main: n_main, alt: n_alt, capText: n_capText, load: n_load }, hd: { main: h_main, alt: h_alt, capText: h_capText, load: h_load } };
     }
 
     function getGCD(a, b) { return b === 0 ? a : getGCD(b, a % b); }
     function getAspectRatio(w, h) {
       if(!w || !h) return { dec:"0.000", frac:"0:0", name:"-" };
       let gcd = getGCD(w,h); let n = w/gcd, d = h/gcd, r = w/h;
-      let name = currentLang === 'zh' ? "自定义" : "Custom";
+      let name = currentLang === 'zh' ? "自定义比例" : "Custom Aspect Ratio";
       if(Math.abs(r - 16/9) < 0.05) { n=16; d=9; name= currentLang === 'zh' ? "16:9 (标准宽屏)" : "16:9 (Standard Widescreen)"; }
       else if(Math.abs(r - 4/3) < 0.05) { n=4; d=3; name= currentLang === 'zh' ? "4:3 (标准全屏)" : "4:3 (Standard Fullscreen)"; }
       else if(Math.abs(r - 21/9) < 0.05) { n=21; d=9; name= currentLang === 'zh' ? "21:9 (超宽带)" : "21:9 (Ultrawide Cinema)"; }
@@ -791,7 +840,6 @@
       
       const aspect = getAspectRatio(pxW, pxH);
       
-      // Update Dimensi & Resolusi DOM
       let wLbl = currentLang === 'zh' ? '宽' : 'W';
       let hLbl = currentLang === 'zh' ? '高' : 'H';
       let uLbl = currentLang === 'zh' ? '块' : 'Unit';
@@ -808,18 +856,18 @@
       document.getElementById('out-standard-ratio').innerText = aspect.name;
       document.getElementById('out-exact-ratio').innerText = `${aspect.frac} (${aspect.dec}:1)`;
       
-      // Hitung Processor Baru
+      // Kalkulasi Processor Akurat
       const proc = getAccurateProcessorRecommendations(pxW, pxH, totPx);
       
       let pLbl = currentLang === 'zh' ? `最少 ${proc.reqPorts} 个网口` : `Min. ${proc.reqPorts} LAN Port`;
       document.getElementById('proc-port-badge').innerText = pLbl;
       document.getElementById('out-proc-ports').innerText = `${proc.reqPorts} Port RJ45`;
       
-      // Update DOM Nova
+      // Update DOM NovaStar
       document.getElementById('out-nova-main').innerText = proc.nova.main;
       document.getElementById('out-nova-alt').innerText = proc.nova.alt;
       document.getElementById('out-nova-cap').innerText = proc.nova.capText;
-      document.getElementById('out-nova-load-badge').innerText = `Load Px: ${proc.nova.load}%`;
+      document.getElementById('out-nova-load-badge').innerText = `Load: ${proc.nova.load}%`;
       if(proc.nova.load !== '-' && proc.nova.load > 85) document.getElementById('out-nova-load-badge').classList.replace('bg-cyan-500/20', 'bg-rose-500/20');
       else document.getElementById('out-nova-load-badge').classList.replace('bg-rose-500/20', 'bg-cyan-500/20');
       
@@ -827,15 +875,23 @@
       document.getElementById('out-hd-main').innerText = proc.hd.main;
       document.getElementById('out-hd-alt').innerText = proc.hd.alt;
       document.getElementById('out-hd-cap').innerText = proc.hd.capText;
-      document.getElementById('out-hd-load-badge').innerText = `Load Px: ${proc.hd.load}%`;
+      document.getElementById('out-hd-load-badge').innerText = `Load: ${proc.hd.load}%`;
+      if(proc.hd.load !== '-' && proc.hd.load > 85) document.getElementById('out-hd-load-badge').classList.replace('bg-amber-500/20', 'bg-rose-500/20');
+      else document.getElementById('out-hd-load-badge').classList.replace('bg-rose-500/20', 'bg-amber-500/20');
 
-      // Kalkulasi Daya Listrik (Standar PLN Indonesia)
+      // Kalkulasi Daya Listrik Akurat (PLN & PUIL)
       const eff = (parseFloat(document.getElementById('adm-eff')?.value) || 88) / 100;
       const pf = parseFloat(document.getElementById('adm-pf')?.value) || 0.95;
+      
+      document.getElementById('display-eff-val').innerText = Math.round(eff * 100);
+      document.getElementById('display-pf-val').innerText = pf;
+
       const wMax = Math.round((totMod * mod.maxWattsDC) / eff);
-      const wAvg = Math.round(wMax * 0.35);
+      const wAvg = Math.round(wMax * 0.33);
       
       const v1p = 220, v3p = 380;
+      
+      const vaMax = Math.round(wMax / pf);
       const current1P = wMax / (v1p * pf); 
       const current3P = wMax / (Math.sqrt(3) * v3p * pf);
       
@@ -847,23 +903,24 @@
       const mcb3P = getRecommendedMCB(safety3P);
       const cable3P = getCableSize3P(mcb3P);
       
-      // Render Nilai Daya
       document.getElementById('out-power-max-kw').innerText = (wMax/1000).toFixed(2);
       document.getElementById('out-power-max-w').innerText = wMax.toLocaleString('id-ID');
       document.getElementById('out-power-avg-kw').innerText = (wAvg/1000).toFixed(2);
       document.getElementById('out-power-avg-w').innerText = wAvg.toLocaleString('id-ID');
       
-      // Render Kelistrikan 1 Fasa
+      document.getElementById('out-watt-sqm').innerText = area > 0 ? Math.round(wMax / area).toLocaleString('id-ID') : 0;
+      document.getElementById('out-va-max').innerText = vaMax.toLocaleString('id-ID');
+      
       document.getElementById('out-current-1p').innerText = current1P.toFixed(1);
       document.getElementById('out-mcb-1p').innerText = `${mcb1P}A (1-Pole)`;
       document.getElementById('out-cable-1p').innerText = cable1P;
       
       const badge1P = document.getElementById('badge-1phase-status');
       if(current1P > 32) {
-        badge1P.innerText = currentLang === 'zh' ? "高负载 (必须三相)" : "Beban Tinggi (Gunakan 3 Fasa)";
+        badge1P.innerText = currentLang === 'zh' ? "高负载 (必须三相)" : "Beban Tinggi (Ganti ke 3 Fasa)";
         badge1P.className = "text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300";
       } else if (current1P > 20) {
-        badge1P.innerText = currentLang === 'zh' ? "临界负载 (建议三相)" : "Batas Rawan (Saran 3 Fasa)";
+        badge1P.innerText = currentLang === 'zh' ? "临界负载 (建议三相)" : "Rawan Panas (Saran 3 Fasa)";
         badge1P.className = "text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300";
       } else {
         badge1P.innerText = currentLang === 'zh' ? "单相安全" : "Aman 1 Fasa";
@@ -872,17 +929,13 @@
 
       document.getElementById('t-3p-badge').innerText = currentLang === 'zh' ? "强烈推荐" : "Sangat Disarankan";
 
-      // Render Kelistrikan 3 Fasa
       document.getElementById('out-current-3p').innerText = current3P.toFixed(1);
       document.getElementById('out-mcb-3p').innerText = `${mcb3P}A (3-Pole)`;
       document.getElementById('out-cable-3p').innerText = cable3P;
       
-      // Render Genset
-      const vaMax = Math.round(wMax / pf);
       const gensetKVA = Math.ceil((vaMax / 1000) / 0.75);
-      document.getElementById('out-genset').innerText = currentLang === 'zh' ? `最低 ${gensetKVA} kVA` : `Min. ${gensetKVA} kVA`;
+      document.getElementById('out-genset').innerText = currentLang === 'zh' ? `${gensetKVA} kVA` : `${gensetKVA} kVA`;
       
-      // Visualizer Aspek Box
       const vBox = document.getElementById('screen-visual');
       let ratio = actWMm/actHMm; let wb = 120, hb = 120/ratio;
       if(hb > 80) { hb=80; wb=80*ratio; }
@@ -917,7 +970,6 @@
     function openWhatsAppModal() { document.getElementById('wa-modal').classList.remove('hidden'); }
     function closeWhatsAppModal() { document.getElementById('wa-modal').classList.add('hidden'); }
     
-    // Init Default
     window.onload = function() { populatePitchOptions(); calculate(); };
   </script>
 </body>
