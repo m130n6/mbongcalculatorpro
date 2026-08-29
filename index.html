@@ -967,8 +967,123 @@
       document.getElementById('admin-panel').classList.add('hidden');
     }
 
-    function openWhatsAppModal() { document.getElementById('wa-modal').classList.remove('hidden'); }
-    function closeWhatsAppModal() { document.getElementById('wa-modal').classList.add('hidden'); }
+    // --- FITUR BARU: EKSPOR HTML ---
+    function openExportCodeModal() { 
+      const codeOutput = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      document.getElementById('export-code-area').value = codeOutput;
+      document.getElementById('export-code-modal').classList.remove('hidden'); 
+    }
+    
+    function closeExportCodeModal() { 
+      document.getElementById('export-code-modal').classList.add('hidden'); 
+    }
+
+    function copySourceCode() {
+      const codeArea = document.getElementById('export-code-area');
+      codeArea.select();
+      codeArea.setSelectionRange(0, 999999); 
+      try {
+        document.execCommand('copy');
+        showToast("Kode berhasil disalin!");
+      } catch(e) {
+        showToast("Gagal menyalin kode.");
+      }
+    }
+
+    function downloadHTMLFile() {
+      const content = document.getElementById('export-code-area').value;
+      const blob = new Blob([content], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mbong_calculator_v3.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("File HTML berhasil diunduh!");
+    }
+
+    // --- FITUR BARU: WHATSAPP SHARE ---
+    function openWhatsAppModal() { 
+      document.getElementById('wa-modal').classList.remove('hidden'); 
+    }
+    
+    function closeWhatsAppModal() { 
+      document.getElementById('wa-modal').classList.add('hidden'); 
+    }
+
+    function generateSummaryText() {
+      const pitch = document.getElementById('pitch').options[document.getElementById('pitch').selectedIndex].text;
+      const dimW = document.getElementById('dim_width').value;
+      const dimH = document.getElementById('dim_height').value;
+      const unit = document.getElementById('unit-label-w').innerText;
+      const modCount = document.getElementById('out-module-count').innerText;
+      const resW = document.getElementById('out-pixel-w').innerText;
+      const resH = document.getElementById('out-pixel-h').innerText;
+      const powerMax = document.getElementById('out-power-max-kw').innerText;
+      const powerAvg = document.getElementById('out-power-avg-kw').innerText;
+      const controller = document.getElementById('out-nova-main').innerText;
+      
+      return `*Kalkulasi Videotron - MBONG PRO*\n\n` +
+             `*Spesifikasi Layar*\n` +
+             `- Modul: ${pitch}\n` +
+             `- Dimensi: ${dimW}${unit} x ${dimH}${unit}\n` +
+             `- Total Modul: ${modCount}\n` +
+             `- Resolusi: ${resW} x ${resH} px\n\n` +
+             `*Daya Listrik*\n` +
+             `- Max Power (100%): ${powerMax} kW\n` +
+             `- Avg Power (~33%): ${powerAvg} kW\n\n` +
+             `*Rekomendasi Controller*\n` +
+             `- NovaStar: ${controller}\n\n` +
+             `_Dihasilkan oleh MBONG CALCULATOR PRO V3.3_`;
+    }
+
+    function sendWhatsAppShare() {
+      const text = encodeURIComponent(generateSummaryText());
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+      closeWhatsAppModal();
+    }
+
+    function sendWhatsAppDirect() {
+      let phone = document.getElementById('custom-wa-phone').value.replace(/\D/g, '');
+      if(phone.startsWith('0')) {
+        phone = '62' + phone.substring(1);
+      }
+      const text = encodeURIComponent(generateSummaryText());
+      window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+      closeWhatsAppModal();
+    }
+
+    // --- FITUR BARU: DOWNLOAD CSV (BOQ) ---
+    function downloadCleanCSV() {
+      const pitch = document.getElementById('pitch').options[document.getElementById('pitch').selectedIndex].text;
+      const dimW = document.getElementById('dim_width').value;
+      const dimH = document.getElementById('dim_height').value;
+      const unit = document.getElementById('unit-label-w').innerText;
+      
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Parameter,Nilai / Spesifikasi\n";
+      csvContent += `Tipe Modul LED,"${pitch}"\n`;
+      csvContent += `Dimensi Layar (Target),"${dimW}${unit} x ${dimH}${unit}"\n`;
+      csvContent += `Total Matriks Modul,"${document.getElementById('out-module-count').innerText}"\n`;
+      csvContent += `Dimensi Fisik Aktual,"${document.getElementById('out-meter-size').innerText}"\n`;
+      csvContent += `Luas Area,"${document.getElementById('out-area').innerText}"\n`;
+      csvContent += `Resolusi Native,"${document.getElementById('out-pixel-w').innerText} x ${document.getElementById('out-pixel-h').innerText} px"\n`;
+      csvContent += `Total Kerapatan Pixel,"${document.getElementById('out-total-pixels').innerText} Dots"\n`;
+      csvContent += `Max AC Power,"${document.getElementById('out-power-max-kw').innerText} kW"\n`;
+      csvContent += `Avg AC Power,"${document.getElementById('out-power-avg-kw').innerText} kW"\n`;
+      csvContent += `Controller Utama (NovaStar),"${document.getElementById('out-nova-main').innerText}"\n`;
+      
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "BOQ_Mbong_Videotron.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("File BOQ (CSV) berhasil diunduh!");
+    }
     
     window.onload = function() { populatePitchOptions(); calculate(); };
   </script>
