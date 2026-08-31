@@ -367,18 +367,11 @@
 
     <!-- Tombol Ekspor Bawah -->
     <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
-      <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <button onclick="openWhatsAppModal()" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-green-600 text-slate-950 font-bold text-xs rounded-xl shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-95 transition"><span class="text-base">📲</span> Kirim Rangkuman Teknis</button>
-        <button onclick="downloadCleanCSV()" class="w-full py-3.5 px-4 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-xs rounded-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-95 transition"><span class="text-base text-cyan-400">📑</span> Unduh BOQ (.csv)</button>
+      <div class="max-w-xl mx-auto grid grid-cols-1 gap-3.5">
+        <button onclick="openAIModal()" class="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold text-xs rounded-xl shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-95 transition"><span class="text-base">✨</span> Mbong AI Analisis</button>
       </div>
     </div>
   </main>
-
-  <!-- Tombol AI Mengambang (Floating Action Button) -->
-  <button onclick="openAIModal()" class="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white rounded-full p-4 shadow-lg shadow-purple-500/40 flex items-center gap-2 transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400 group">
-    <span class="text-xl">✨</span>
-    <span class="font-bold text-sm hidden sm:block pr-1">Mbong AI</span>
-  </button>
 
   <!-- Modals -->
   <div id="profile-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden" onclick="closeProfileModal()">
@@ -435,9 +428,10 @@
       <div class="min-h-[120px] max-h-[60vh] overflow-y-auto bg-slate-950/50 p-4 rounded-xl border border-slate-800/80 text-sm text-slate-300 leading-relaxed font-mono">
         <span id="ai-text"></span><span id="ai-cursor" class="ai-cursor"></span>
       </div>
-      <div class="flex gap-2 w-full pt-1">
-        <button onclick="copyAIText()" class="w-1/2 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5"><span class="text-sm">📋</span> Salin Analisis</button>
-        <button onclick="closeAIModal()" class="w-1/2 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition">Tutup / Close</button>
+      <div class="grid grid-cols-3 gap-2 w-full pt-1">
+        <button onclick="copyAIText()" class="py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl text-[11px] sm:text-xs font-bold transition flex items-center justify-center gap-1.5"><span class="text-sm">📋</span> Salin</button>
+        <button onclick="sendAIWhatsAppShare()" class="py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-[11px] sm:text-xs font-bold transition flex items-center justify-center gap-1.5"><span class="text-sm">📲</span> Kirim WA</button>
+        <button onclick="closeAIModal()" class="py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl text-[11px] sm:text-xs font-bold transition">Tutup</button>
       </div>
     </div>
   </div>
@@ -1077,45 +1071,120 @@
       document.getElementById('wa-modal').classList.add('hidden'); 
     }
 
-    function generateSummaryText() {
-      const pitch = document.getElementById('pitch').options[document.getElementById('pitch').selectedIndex].text;
-      const dimW = document.getElementById('dim_width').value;
-      const dimH = document.getElementById('dim_height').value;
-      const unit = document.getElementById('unit-label-w').innerText;
-      const modCount = document.getElementById('out-module-count').innerText;
-      const resW = document.getElementById('out-pixel-w').innerText;
-      const resH = document.getElementById('out-pixel-h').innerText;
-      const powerMax = document.getElementById('out-power-max-kw').innerText;
-      const powerAvg = document.getElementById('out-power-avg-kw').innerText;
-      const controller = document.getElementById('out-nova-main').innerText;
-      
-      return `*Kalkulasi Videotron - MBONG PRO*\n\n` +
-             `*Spesifikasi Layar*\n` +
-             `- Modul: ${pitch}\n` +
-             `- Dimensi: ${dimW}${unit} x ${dimH}${unit}\n` +
-             `- Total Modul: ${modCount}\n` +
-             `- Resolusi: ${resW} x ${resH} px\n\n` +
-             `*Daya Listrik*\n` +
-             `- Max Power (100%): ${powerMax} kW\n` +
-             `- Avg Power (~33%): ${powerAvg} kW\n\n` +
-             `*Rekomendasi Controller*\n` +
-             `- NovaStar: ${controller}\n\n` +
-             `_Dihasilkan oleh MBONG CALCULATOR PRO V3.3_`;
-    }
-
-    function sendWhatsAppShare() {
-      const text = encodeURIComponent(generateSummaryText());
-      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-      closeWhatsAppModal();
-    }
-
     function sendWhatsAppDirect() {
       let phone = document.getElementById('custom-wa-phone').value.replace(/\D/g, '');
       if(phone.startsWith('0')) {
         phone = '62' + phone.substring(1);
       }
-      const text = encodeURIComponent(generateSummaryText());
+      
+      // Karena kita mau mengirim TEKS ANALISIS AI SAAT INI (bukan yang generateSummary biasa)
+      // Kita cek apakah currentAITextRaw sudah digenerate:
+      if (!currentAITextRaw) {
+         generateAITextForSharing();
+      }
+      const text = encodeURIComponent(currentAITextRaw);
       window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank');
+      closeWhatsAppModal();
+    }
+    
+    // Fallback jika memencet WA tapi AI modal belum sempat ter-generate
+    function generateAITextForSharing() {
+      const pitchSelect = document.getElementById('pitch');
+      const pitchKey = pitchSelect.value;
+      const pitchNum = parseFloat(pitchKey);
+      const pitchText = pitchSelect.options[pitchSelect.selectedIndex].text;
+      
+      const sizeStr = document.getElementById('out-meter-size').innerText;
+      const area = document.getElementById('out-area').innerText;
+      const resW = document.getElementById('out-pixel-w').innerText;
+      const resH = document.getElementById('out-pixel-h').innerText;
+      const totPx = document.getElementById('out-total-pixels').innerText;
+      const ratio = document.getElementById('out-exact-ratio').innerText;
+      const ratioName = document.getElementById('out-standard-ratio').innerText;
+      
+      const novaMain = document.getElementById('out-nova-main').innerText;
+      const novaAlt = document.getElementById('out-nova-alt').innerText;
+      const ports = document.getElementById('out-proc-ports').innerText;
+      
+      const kw = document.getElementById('out-power-max-kw').innerText;
+      const avgKw = document.getElementById('out-power-avg-kw').innerText;
+      const current1P = parseFloat(document.getElementById('out-current-1p').innerText) || 0;
+      const current3P = document.getElementById('out-current-3p').innerText;
+      const mcb3P = document.getElementById('out-mcb-3p').innerText;
+
+      if (currentLang === 'id') {
+        currentAITextRaw = `1. SPESIFIKASI MODUL & VISUAL\n` +
+          `- Tipe Modul: ${pitchText}\n` +
+          `- Dimensi Fisik: ${sizeStr} (Luas: ${area})\n` +
+          `- Resolusi Native: ${resW} x ${resH} pixel\n` +
+          `- Total Kerapatan: ${totPx} dots\n` +
+          `- Jarak Pandang Optimal: Mulai dari ${pitchNum} meter\n` +
+          `Layar ini memiliki kerapatan pixel yang optimal untuk jarak pandang tersebut. Resolusi total menjadi acuan mutlak bagi tim desainer visual Anda.\n\n` +
+          `2. ASPEK RASIO & KONTEN VIDEO\n` +
+          `- Rasio Kalkulasi: ${ratio} (${ratioName})\n` +
+          `${ratioName !== 'Custom Aspect Ratio' ? 'Rasio ini memenuhi standar industri. Konten video umum dapat diputar sempurna tanpa khawatir gambar tertarik atau munculnya border hitam (letterboxing).' : 'PERHATIAN: Layar ini menggunakan proporsi Custom. Sangat diwajibkan bagi Content Creator untuk me-render video atau gambar tepat pada resolusi ' + resW + ' x ' + resH + ' pixel guna menghindari distorsi visual (gambar gepeng/melar).'}\n\n` +
+          `3. SISTEM KONTROL & VIDEO PROCESSOR\n` +
+          `- Rekomendasi Utama: ${novaMain}\n` +
+          `- Opsi Alternatif: ${novaAlt}\n` +
+          `- Kebutuhan Jalur Data: ${ports}\n` +
+          `Sebagai teknisi, saya merekomendasikan tipe controller di atas karena hardware-nya sanggup memproses beban ${totPx} pixel dengan sangat mulus tanpa lag atau frame-drop (patah-patah). Anda membutuhkan ${ports} karena aturan standarnya 1 port RJ45 hanya mampu membawa maksimal 650.000 pixel dengan aman. Saran tambahan: Lakukan 'mapping' kabel data secara terstruktur (misal pola zig-zag vertikal) agar distribusi sinyal stabil, dan usahakan ada sisa 1 port kosong di processor sebagai jalur backup darurat (redundancy).\n\n` +
+          `4. REKAYASA KELISTRIKAN\n` +
+          `- Tarikan Daya Maksimal (100% Putih): ${kw} kW\n` +
+          `- Estimasi Daya Rata-rata (Konten Berjalan): ${avgKw} kW\n` +
+          `${current1P > 20 ? '🚨 PERINGATAN KRITIS: Tarikan arus mencapai ' + current1P.toFixed(1) + 'A pada 1 Fasa. Sistem kelistrikan ini sangat RAWAN PANAS jika dipaksakan menggunakan instalasi 1 Fasa (220V). Secara teknis engineer, Anda WAJIB menggunakan Panel Distribusi 3 Fasa (380V) dengan arus beban ' + current3P + 'A per Fasa dan proteksi MCB ' + mcb3P + ' untuk menjamin keamanan dari risiko kebakaran.' : '✅ STATUS AMAN: Arus listrik berada di bawah ambang batas kritis (' + current1P.toFixed(1) + 'A). Konfigurasi ini sangat aman untuk menggunakan instalasi kelistrikan 1 Fasa (220V) standar.'}\n\n` +
+          `-- Akhir dari Laporan Analisis AI --`;
+      } else if (currentLang === 'en') {
+        currentAITextRaw = `1. MODULE & VISUAL SPECIFICATION\n` +
+          `- Module Type: ${pitchText}\n` +
+          `- Physical Size: ${sizeStr} (Area: ${area})\n` +
+          `- Native Resolution: ${resW} x ${resH} pixels\n` +
+          `- Total Pixel Density: ${totPx} dots\n` +
+          `- Optimal Viewing Distance: Starting from ${pitchNum} meters\n` +
+          `This screen possesses an optimal pixel density for the designated viewing distance. This total resolution serves as the absolute baseline for your visual design team.\n\n` +
+          `2. ASPECT RATIO & VIDEO CONTENT\n` +
+          `- Calculated Ratio: ${ratio} (${ratioName})\n` +
+          `${ratioName !== 'Custom Aspect Ratio' ? 'This ratio meets industry standards. General video content will play perfectly without concerns of stretching or black borders (letterboxing).' : 'ATTENTION: This screen utilizes a Custom proportion. It is highly mandatory for Content Creators to render video or graphics exactly at ' + resW + ' x ' + resH + ' pixels to prevent visual distortion.'}\n\n` +
+          `3. CONTROL SYSTEM & VIDEO PROCESSOR\n` +
+          `- Primary Recommendation: ${novaMain}\n` +
+          `- Alternative Option: ${novaAlt}\n` +
+          `- Data Line Requirement: ${ports}\n` +
+          `As an engineer, I highly recommend the controller models above because their hardware is perfectly capable of rendering ${totPx} pixels smoothly without lagging or frame-drops. You will need ${ports} because, as a safe standard, 1 RJ45 port can optimally drive up to 650,000 pixels. Pro tip: Structure your data cable 'mapping' efficiently (e.g., vertical zig-zag pattern) for stable signal distribution, and if possible, keep at least 1 empty port on the processor as an emergency backup (redundancy line).\n\n` +
+          `4. ELECTRICAL ENGINEERING\n` +
+          `- Maximum Power Load (100% White): ${kw} kW\n` +
+          `- Average Power Estimate (Running Content): ${avgKw} kW\n` +
+          `${current1P > 20 ? '🚨 CRITICAL WARNING: The current draw reaches ' + current1P.toFixed(1) + 'A on a single phase. This setup is highly PRONE TO OVERHEATING if forced onto a 1-Phase (220V) installation. Technically, you MUST utilize a 3-Phase (380V) Distribution Panel with a load current of ' + current3P + 'A per phase and ' + mcb3P + ' MCB protection to guarantee safety against fire hazards.' : '✅ SAFE STATUS: The electrical current is well below the critical threshold (' + current1P.toFixed(1) + 'A). This configuration is very safe for a standard Single-Phase (220V) electrical installation.'}\n\n` +
+          `-- End of AI Analysis Report --`;
+      } else if (currentLang === 'zh') {
+        currentAITextRaw = `1. 模组与视觉规格\n` +
+          `- 模组类型：${pitchText}\n` +
+          `- 物理尺寸：${sizeStr} (面积: ${area})\n` +
+          `- 原生分辨率：${resW} x ${resH} 像素\n` +
+          `- 总像素密度：${totPx} 点\n` +
+          `- 最佳观看距离：从 ${pitchNum} 米开始\n` +
+          `此屏幕具有符合其模组规格的最佳像素密度。该总分辨率是您的视觉设计团队制作内容的绝对基准。\n\n` +
+          `2. 宽高比与视频内容\n` +
+          `- 计算比例：${ratio} (${ratioName})\n` +
+          `${ratioName !== 'Custom Aspect Ratio' ? '此比例符合行业标准。常规视频内容可完美播放，无需担心画面拉伸或出现黑边。' : '注意：该屏幕采用自定义比例。强烈要求内容创作者务必以精确的 ' + resW + ' x ' + resH + ' 像素分辨率渲染视频或图像，以避免视觉失真（画面被挤压或拉伸）。'}\n\n` +
+          `3. 控制系统与视频处理器\n` +
+          `- 首选推荐：${novaMain}\n` +
+          `- 备选方案：${novaAlt}\n` +
+          `- 数据端口需求：${ports}\n` +
+          `作为专业工程师，我强烈推荐上述控制器，因为其硬件性能足以流畅处理 ${totPx} 像素的负载，绝不会出现卡顿或掉帧。您需要 ${ports}，因为按照安全标准，单个 RJ45 网口最多只能承载 650,000 像素。额外建议：请合理规划数据线的“走线布线”（如垂直 Z 字型走线），以确保信号分配稳定；如果可能，请在处理器上保留至少 1 个空闲网口作为紧急备份（冗余链路）。\n\n` +
+          `4. 电力工程\n` +
+          `- 最大电力负荷 (100% 全白)：${kw} kW\n` +
+          `- 预估平均电力 (常规视频播放)：${avgKw} kW\n` +
+          `${current1P > 20 ? '🚨 严重警告：单相电流达到 ' + current1P.toFixed(1) + 'A。如果强制使用单相 (220V) 安装，该电气系统极易发生线缆过热。从工程技术角度来看，您必须使用三相 (380V) 配电盘，其每相负载电流降至 ' + current3P + 'A，并配备 ' + mcb3P + ' 断路器保护，以确保系统稳定并防范火灾风险。' : '✅ 安全状态：电流处于临界阈值以下 (' + current1P.toFixed(1) + 'A)。该配置完全可以安全地使用标准单相 (220V) 电力安装。'}\n\n` +
+          `-- AI 分析报告结束 --`;
+      }
+    }
+
+    function sendWhatsAppShare() {
+      // Sama seperti sendWhatsAppDirect, jika belum ada generate dulu
+      if (!currentAITextRaw) {
+         generateAITextForSharing();
+      }
+      const text = encodeURIComponent(currentAITextRaw);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
       closeWhatsAppModal();
     }
 
@@ -1177,6 +1246,12 @@
       });
     }
 
+    function sendAIWhatsAppShare() {
+      if(!currentAITextRaw) return;
+      const text = encodeURIComponent(currentAITextRaw);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
     function generateAIText() {
       const pitchSelect = document.getElementById('pitch');
       const pitchKey = pitchSelect.value;
@@ -1202,8 +1277,7 @@
       const mcb3P = document.getElementById('out-mcb-3p').innerText;
 
       if (currentLang === 'id') {
-        currentAITextRaw = `[ MBONG AI - ANALISIS TEKNIS MENDALAM ]\n\n` +
-          `1. SPESIFIKASI MODUL & VISUAL\n` +
+        currentAITextRaw = `1. SPESIFIKASI MODUL & VISUAL\n` +
           `- Tipe Modul: ${pitchText}\n` +
           `- Dimensi Fisik: ${sizeStr} (Luas: ${area})\n` +
           `- Resolusi Native: ${resW} x ${resH} pixel\n` +
@@ -1224,8 +1298,7 @@
           `${current1P > 20 ? '🚨 PERINGATAN KRITIS: Tarikan arus mencapai ' + current1P.toFixed(1) + 'A pada 1 Fasa. Sistem kelistrikan ini sangat RAWAN PANAS jika dipaksakan menggunakan instalasi 1 Fasa (220V). Secara teknis engineer, Anda WAJIB menggunakan Panel Distribusi 3 Fasa (380V) dengan arus beban ' + current3P + 'A per Fasa dan proteksi MCB ' + mcb3P + ' untuk menjamin keamanan dari risiko kebakaran.' : '✅ STATUS AMAN: Arus listrik berada di bawah ambang batas kritis (' + current1P.toFixed(1) + 'A). Konfigurasi ini sangat aman untuk menggunakan instalasi kelistrikan 1 Fasa (220V) standar.'}\n\n` +
           `-- Akhir dari Laporan Analisis AI --`;
       } else if (currentLang === 'en') {
-        currentAITextRaw = `[ MBONG AI - DEEP TECHNICAL ANALYSIS ]\n\n` +
-          `1. MODULE & VISUAL SPECIFICATION\n` +
+        currentAITextRaw = `1. MODULE & VISUAL SPECIFICATION\n` +
           `- Module Type: ${pitchText}\n` +
           `- Physical Size: ${sizeStr} (Area: ${area})\n` +
           `- Native Resolution: ${resW} x ${resH} pixels\n` +
@@ -1246,8 +1319,7 @@
           `${current1P > 20 ? '🚨 CRITICAL WARNING: The current draw reaches ' + current1P.toFixed(1) + 'A on a single phase. This setup is highly PRONE TO OVERHEATING if forced onto a 1-Phase (220V) installation. Technically, you MUST utilize a 3-Phase (380V) Distribution Panel with a load current of ' + current3P + 'A per phase and ' + mcb3P + ' MCB protection to guarantee safety against fire hazards.' : '✅ SAFE STATUS: The electrical current is well below the critical threshold (' + current1P.toFixed(1) + 'A). This configuration is very safe for a standard Single-Phase (220V) electrical installation.'}\n\n` +
           `-- End of AI Analysis Report --`;
       } else if (currentLang === 'zh') {
-        currentAITextRaw = `[ MBONG AI - 深度技术分析报告 ]\n\n` +
-          `1. 模组与视觉规格\n` +
+        currentAITextRaw = `1. 模组与视觉规格\n` +
           `- 模组类型：${pitchText}\n` +
           `- 物理尺寸：${sizeStr} (面积: ${area})\n` +
           `- 原生分辨率：${resW} x ${resH} 像素\n` +
