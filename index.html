@@ -274,14 +274,26 @@
           </div>
 
           <div class="space-y-4">
-            <div>
-              <label id="t-pitch-label" class="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Pixel Pitch &amp; Tipe Modul</label>
-              <select id="pitch" onchange="calculate()" class="w-full rounded-2xl px-4 py-3.5 text-sm font-bold cursor-pointer shadow-sm">
-                <!-- Otomatis diisi oleh JS -->
-              </select>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label id="t-pitch-label" class="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Pixel Pitch &amp; Tipe Modul</label>
+                <select id="pitch" onchange="calculate()" class="w-full rounded-2xl px-4 py-3.5 text-[13px] font-bold cursor-pointer shadow-sm">
+                  <!-- Otomatis diisi oleh JS -->
+                </select>
+              </div>
+              <div>
+                <label id="t-cabinet-label" class="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Pixel Pitch &amp; Tipe Kabinet</label>
+                <select id="cabinet" onchange="calculate()" class="w-full rounded-2xl px-4 py-3.5 text-[13px] font-bold cursor-pointer shadow-sm text-slate-700">
+                  <option value="600">P0.9 - P2.5 Indoor (600×337.5mm)</option>
+                  <option value="640">P0.9 - P2.5 Indoor (640×480mm)</option>
+                  <option value="480">P0.9 - P2.5 Indoor (480×480mm)</option>
+                  <option id="opt-cab-custom" value="custom" selected>Tanpa Kabinet / Custom</option>
+                </select>
+              </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 gap-3 mt-4">
               <div>
                 <label id="t-width-label" class="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Lebar Layar</label>
                 <div class="relative">
@@ -344,7 +356,7 @@
             </div>
 
             <!-- Visual Box (DIREVISI: LEBIH KOTAK & MEMBESAR DI DESKTOP) -->
-            <div class="flex flex-col items-center justify-center bg-white/80 backdrop-blur p-4 lg:p-6 lg:px-10 rounded-2xl border border-white shadow-sm flex-shrink-0 relative z-10 min-w-[120px] lg:min-w-[180px]">
+            <div class="flex flex-col items-center justify-center bg-white/80 backdrop-blur p-4 lg:p-6 lg:px-10 rounded-2xl border border-white shadow-sm flex-shrink-0 relative z-10 min-w-[120px] lg:minw-[180px]">
               <div class="transform transition-transform duration-300 md:scale-125 lg:scale-[1.7] md:my-2 lg:my-6">
                 <div id="screen-visual" class="led-matrix-bg flex items-center justify-center text-[10px] font-bold text-cyan-300 transition-all font-mono" style="width: 100px; height: 50px;">
                   <span id="visual-aspect" class="relative z-10 bg-slate-900/80 px-1 rounded shadow-sm backdrop-blur-sm">2:1</span>
@@ -880,6 +892,8 @@
         subtitle: "Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron V3.3",
         dim_title: "Dimensi & Modul",
         pitch_label: "Pixel Pitch & Tipe Modul",
+        cabinet_label: "Pixel Pitch & Tipe Kabinet",
+        opt_cab_custom: "Tanpa Kabinet / Custom",
         width_label: "Lebar Layar (Target)",
         height_label: "Tinggi Layar (Target)",
         matrix: "Matriks Modul:",
@@ -973,6 +987,8 @@
         subtitle: "Resolution, Processor & Power Engineering V3.3",
         dim_title: "Dimensions",
         pitch_label: "Pixel Pitch & Module Type",
+        cabinet_label: "Pixel Pitch & Cabinet Type",
+        opt_cab_custom: "No Cabinet / Custom",
         width_label: "Target Width",
         height_label: "Target Height",
         matrix: "Module Matrix:",
@@ -1066,6 +1082,8 @@
         subtitle: "LED屏幕分辨率、视频处理器与电力计算 V3.3",
         dim_title: "尺寸与模组",
         pitch_label: "像素间距",
+        cabinet_label: "像素间距与箱体类型",
+        opt_cab_custom: "无箱体 / 自定义",
         width_label: "目标宽度",
         height_label: "目标高度",
         matrix: "模组矩阵:",
@@ -1267,11 +1285,17 @@
       // Card 1: Dimensi
       document.getElementById('t-dim-title').innerHTML = `<span>📐</span> ${dict.dim_title}`;
       document.getElementById('t-pitch-label').innerText = dict.pitch_label;
+      
+      // Update the new cabinet labels
+      if (document.getElementById('t-cabinet-label')) {
+          document.getElementById('t-cabinet-label').innerText = dict.cabinet_label;
+      }
+      if (document.getElementById('opt-cab-custom')) {
+          document.getElementById('opt-cab-custom').innerText = dict.opt_cab_custom;
+      }
+      
       document.getElementById('t-width-label').innerText = dict.width_label;
       document.getElementById('t-height-label').innerText = dict.height_label;
-      document.getElementById('t-lbl-matrix').innerText = dict.matrix;
-      document.getElementById('t-lbl-actual-size').innerText = dict.actual_size;
-      document.getElementById('t-lbl-area').innerText = dict.area;
       
       // Card 2: Resolusi
       document.getElementById('t-res-title').innerHTML = `<span>📟</span> ${dict.res_title}`;
@@ -1425,6 +1449,22 @@
     function calculate() {
       const pitchKey = document.getElementById('pitch').value || "2.5";
       const mod = LED_MODULE_DATABASE[pitchKey];
+      const pitchNum = parseFloat(pitchKey);
+      
+      const cabSelect = document.getElementById('cabinet');
+      const cabVal = cabSelect ? cabSelect.value : "custom";
+      
+      let baseWMm = mod.widthMm;
+      let baseHMm = mod.heightMm;
+      let isCabinet = false;
+      
+      // Override if a cabinet is selected for P2.5 indoor and below
+      if (cabVal !== "custom" && mod.type === 'indoor' && pitchNum <= 2.5) {
+          isCabinet = true;
+          if (cabVal === "600") { baseWMm = 600; baseHMm = 337.5; }
+          else if (cabVal === "640") { baseWMm = 640; baseHMm = 480; }
+          else if (cabVal === "480") { baseWMm = 480; baseHMm = 480; }
+      }
       
       const inW = parseFloat(document.getElementById('dim_width').value) || 0;
       const inH = parseFloat(document.getElementById('dim_height').value) || 0;
@@ -1432,24 +1472,37 @@
       let tarW = currentUnit === 'm' ? inW*1000 : (currentUnit === 'cm' ? inW*10 : inW);
       let tarH = currentUnit === 'm' ? inH*1000 : (currentUnit === 'cm' ? inH*10 : inH);
       
-      const modW = Math.max(1, Math.round(tarW / mod.widthMm));
-      const modH = Math.max(1, Math.round(tarH / mod.heightMm));
-      const totMod = modW * modH;
+      const gridW = Math.max(1, Math.round(tarW / baseWMm));
+      const gridH = Math.max(1, Math.round(tarH / baseHMm));
+      const totGrid = gridW * gridH;
       
-      const actWMm = modW * mod.widthMm; const actHMm = modH * mod.heightMm;
+      const actWMm = gridW * baseWMm; 
+      const actHMm = gridH * baseHMm;
       const area = (actWMm/1000) * (actHMm/1000);
       
-      const pxW = modW * mod.pixelW; const pxH = modH * mod.pixelH;
+      let pxW, pxH;
+      if (isCabinet) {
+          pxW = gridW * Math.round(baseWMm / pitchNum);
+          pxH = gridH * Math.round(baseHMm / pitchNum);
+      } else {
+          pxW = gridW * mod.pixelW;
+          pxH = gridH * mod.pixelH;
+      }
       const totPx = pxW * pxH;
       const mp = (totPx / 1000000).toFixed(2);
       
       const aspect = getAspectRatio(pxW, pxH);
       
+      // Dynamic Labels for Matrix based on cabinet/module choice
       let wLbl = currentLang === 'zh' ? '宽' : 'W';
       let hLbl = currentLang === 'zh' ? '高' : 'H';
-      let uLbl = currentLang === 'zh' ? '块' : 'Unit';
-      
-      document.getElementById('out-module-count').innerText = `${modW} (${wLbl}) × ${modH} (${hLbl}) = ${totMod} ${uLbl}`;
+      let uLbl = currentLang === 'zh' ? (isCabinet ? '箱体' : '块') : (isCabinet ? 'Kabinet' : 'Unit');
+      let matrixLbl = currentLang === 'zh' ? (isCabinet ? '箱体矩阵:' : '模组矩阵:') : 
+                      (currentLang === 'en' ? (isCabinet ? 'Cabinet Matrix:' : 'Module Matrix:') : 
+                      (isCabinet ? 'Matriks Kabinet:' : 'Matriks Modul:'));
+                      
+      document.getElementById('t-lbl-matrix').innerText = matrixLbl;
+      document.getElementById('out-module-count').innerText = `${gridW} (${wLbl}) × ${gridH} (${hLbl}) = ${totGrid} ${uLbl}`;
       document.getElementById('out-meter-size').innerText = `${parseFloat((actWMm/10).toFixed(2))} × ${parseFloat((actHMm/10).toFixed(2))} cm`;
       document.getElementById('out-area').innerText = `${area.toFixed(3)} m²`;
       document.getElementById('out-pixel-w').innerText = pxW.toLocaleString('id-ID');
@@ -1486,18 +1539,23 @@
           document.getElementById('out-hd-load-badge').className = "text-[9px] font-bold px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 shadow-sm";
       }
 
+      // PRECISE POWER CALCULATION
       const eff = (parseFloat(document.getElementById('adm-eff')?.value) || 88) / 100;
       const pf = parseFloat(document.getElementById('adm-pf')?.value) || 0.95;
       
-      document.getElementById('display-eff-val').innerText = Math.round(eff * 100);
-      document.getElementById('display-pf-val').innerText = pf.toFixed(2);
-
-      const totalWattsDC = totMod * mod.maxWattsDC;
-      const totalAvgWattsDC = totMod * mod.avgWattsDC;
+      const modAreaSqm = (mod.widthMm / 1000) * (mod.heightMm / 1000);
+      const wattsPerSqmMax = mod.maxWattsDC / modAreaSqm;
+      const wattsPerSqmAvg = mod.avgWattsDC / modAreaSqm;
+      
+      const totalWattsDC = area * wattsPerSqmMax;
+      const totalAvgWattsDC = area * wattsPerSqmAvg;
       
       const wMax = totalWattsDC / eff;
       const wAvg = totalAvgWattsDC / eff;
       
+      document.getElementById('display-eff-val').innerText = Math.round(eff * 100);
+      document.getElementById('display-pf-val').innerText = pf.toFixed(2);
+
       const actualRatio = Math.round((mod.avgWattsDC / mod.maxWattsDC) * 100);
       const baseText = DICTIONARY[currentLang].power_avg.replace('33', actualRatio);
       document.getElementById('t-lbl-power-avg').innerText = baseText;
@@ -1550,8 +1608,8 @@
       document.getElementById('out-genset').innerText = `${gensetKVA} kVA`;
       
       const vBox = document.getElementById('screen-visual');
-      let ratio = actWMm/actHMm; let wb = 100, hb = 100/ratio;
-      if(hb > 50) { hb=50; wb=50*ratio; }
+      let ratioVisual = actWMm/actHMm; let wb = 100, hb = 100/ratioVisual;
+      if(hb > 50) { hb=50; wb=50*ratioVisual; }
       vBox.style.width = `${Math.min(120, Math.max(40, wb))}px`; vBox.style.height = `${Math.min(60, Math.max(15, hb))}px`;
     }
 
@@ -1653,6 +1711,11 @@
       const pitchKey = pitchSelect.value;
       const pitchNum = parseFloat(pitchKey);
       const pitchText = pitchSelect.options[pitchSelect.selectedIndex].text;
+      
+      const cabSelect = document.getElementById('cabinet');
+      const cabVal = cabSelect ? cabSelect.value : "custom";
+      const isCabinet = (cabVal !== "custom" && pitchNum <= 2.5);
+      
       const sizeStr = document.getElementById('out-meter-size').innerText;
       const area = document.getElementById('out-area').innerText;
       const resW = document.getElementById('out-pixel-w').innerText;
@@ -1670,9 +1733,10 @@
       const mcb3P = document.getElementById('out-mcb-3p').innerText;
 
       if (currentLang === 'id') {
+        const buildType = isCabinet ? `kabinet die-cast ukuran ${cabVal}mm` : `modul`;
         currentAITextRaw = `Halo! Ini hasil kalkulasi teknis videotron dari sistem cerdas Bang Mbong. Kita bedah spesifikasinya biar eksekusi proyek kamu presisi dan aman. 🚀\n\n` +
-          `**1. Visual & Modul (Hardware)**\n` +
-          `Layar ini menggunakan modul ${pitchText}. Dengan dimensi fisik ${sizeStr} (luas ${area}), kita dapat resolusi murni di angka ${resW} x ${resH} pixel. Total kerapatan pikselnya mencapai ${totPx} dots. Artinya? Gambar bakal super tajam dan optimal kalau audiens melihat dari jarak minimal ${pitchNum} meter. Pastikan tim desain render konten persis di resolusi ini biar hasilnya maksimal!\n\n` +
+          `**1. Visual & Hardware**\n` +
+          `Layar ini dibangun menggunakan ${buildType} dengan spesifikasi ${pitchText}. Dengan dimensi fisik ${sizeStr} (luas ${area}), kita dapat resolusi murni di angka ${resW} x ${resH} pixel. Total kerapatan pikselnya mencapai ${totPx} dots. Artinya? Gambar bakal super tajam dan optimal kalau audiens melihat dari jarak minimal ${pitchNum} meter. Pastikan tim desain render konten persis di resolusi ini biar hasilnya maksimal!\n\n` +
           `**2. Aspek Rasio & Konten**\n` +
           `Rasio aktual layar ini ada di ${ratio} (${ratioName}). ` +
           (ratioName !== 'Custom' ? `Mantap, ini rasio standar industri! Mutar video umum dijamin proporsional, bebas dari efek *stretch* (melar) atau *letterbox* (pinggiran hitam).\n\n` : `Karena ini ukuran 'Custom', tim visual wajib banget *lock* resolusi render di ${resW} x ${resH} pixel. Kalau nggak, gambar berisiko gepeng atau distorsi.\n\n`) +
@@ -1684,9 +1748,10 @@
           `Semoga data teknis ini mempermudah proses instalasi kamu. Butuh *troubleshooting* lebih lanjut? Tinggal kontak Bang Mbong. 🍻\n` +
           `-- Mbong AI --`;
       } else if (currentLang === 'en') {
+        const buildType = isCabinet ? `${cabVal}mm die-cast cabinets` : `modules`;
         currentAITextRaw = `Hello! Here is the technical calculation for your LED display powered by Bang Mbong's engine. Let's break down the specs to ensure a precise and safe execution. 🚀\n\n` +
-          `**1. Visual & Module (Hardware)**\n` +
-          `We're deploying the ${pitchText} module. With physical dimensions of ${sizeStr} (total area: ${area}), the native resolution locks in at ${resW} x ${resH} pixels. That’s a total density of ${totPx} dots. What does this mean? The display will deliver ultra-sharp visuals when viewed from an optimal distance of ${pitchNum} meters and beyond. Make sure your design team renders content exactly to this resolution!\n\n` +
+          `**1. Visual & Hardware**\n` +
+          `We're deploying this screen using ${buildType} specified at ${pitchText}. With physical dimensions of ${sizeStr} (total area: ${area}), the native resolution locks in at ${resW} x ${resH} pixels. That’s a total density of ${totPx} dots. What does this mean? The display will deliver ultra-sharp visuals when viewed from an optimal distance of ${pitchNum} meters and beyond. Make sure your design team renders content exactly to this resolution!\n\n` +
           `**2. Aspect Ratio & Content Layout**\n` +
           `This display features a ${ratio} aspect ratio (${ratioName}). ` +
           (ratioName !== 'Custom' ? `Great news, this is an industry standard! Playing standard video content will be perfectly proportional—no awkward stretching or black bars (letterboxing).\n\n` : `Since we're dealing with a 'Custom' aspect ratio, your visual team absolutely must lock their render settings to ${resW} x ${resH} pixels to avoid any squished or distorted imagery.\n\n`) +
@@ -1698,9 +1763,10 @@
           `Hope this technical breakdown streamlines your installation process. Need further troubleshooting? Just reach out to Bang Mbong. 🍻\n` +
           `-- Mbong AI --`;
       } else if (currentLang === 'zh') {
+        const buildType = isCabinet ? `${cabVal}mm 压铸箱体` : `模组`;
         currentAITextRaw = `您好！这是由 Bang Mbong 智能引擎生成的 LED 显示屏技术参数计算结果。我们来详细拆解规格，确保项目执行精准且安全。🚀\n\n` +
-          `**1. 视觉与模组 (硬件)**\n` +
-          `屏幕采用 ${pitchText} 模组。物理尺寸为 ${sizeStr}（总面积 ${area}），原生分辨率达到精准的 ${resW} x ${resH} 像素。总像素密度高达 ${totPx} 点。这意味着在 ${pitchNum} 米以上的最佳观看距离，画面将极其锐利。请务必让设计团队按照此分辨率渲染内容以达到最佳效果！\n\n` +
+          `**1. 视觉与硬件**\n` +
+          `屏幕采用 ${pitchText} 规格的 ${buildType} 构建。物理尺寸为 ${sizeStr}（总面积 ${area}），原生分辨率达到精准的 ${resW} x ${resH} 像素。总像素密度高达 ${totPx} 点。这意味着在 ${pitchNum} 米以上的最佳观看距离，画面将极其锐利。请务必让设计团队按照此分辨率渲染内容以达到最佳效果！\n\n` +
           `**2. 宽高比与内容布局**\n` +
           `该屏幕的实际比例为 ${ratio} (${ratioName})。` +
           (ratioName !== 'Custom' ? `太棒了，这是行业标准比例！播放常规视频保证比例完美，绝对不会出现画面拉伸或黑边（Letterboxing）。\n\n` : `由于这是“自定义”比例，您的视觉团队必须将渲染分辨率锁定为 ${resW} x ${resH} 像素，以防图像被挤压或失真。\n\n`) +
@@ -1790,6 +1856,25 @@
             if(key === "3.91") key = "3.91-in"; 
             if(key === "3") key = "3.076-in";
             let dbMod = LED_MODULE_DATABASE[key];
+            
+            let pitchNum = parseFloat(key);
+            let cabSelect = document.getElementById('cabinet');
+            let cabVal = cabSelect ? cabSelect.value : "custom";
+            
+            if (cabVal !== "custom" && dbMod.type === 'indoor' && pitchNum <= 2.5) {
+                let cw, ch;
+                if (cabVal === "600") { cw = 600; ch = 337.5; }
+                else if (cabVal === "640") { cw = 640; ch = 480; }
+                else if (cabVal === "480") { cw = 480; ch = 480; }
+                
+                return { 
+                    w: cw, 
+                    h: ch, 
+                    pxW: Math.round(cw / pitchNum), 
+                    pxH: Math.round(ch / pitchNum) 
+                };
+            }
+            
             return { w: dbMod.widthMm, h: dbMod.heightMm, pxW: dbMod.pixelW, pxH: dbMod.pixelH };
         };
 
