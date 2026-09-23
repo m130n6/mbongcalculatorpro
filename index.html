@@ -688,7 +688,7 @@
     <div id="main-bottom-actions" class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-slate-100 via-slate-100/90 to-transparent pt-12 pb-5 px-4 pointer-events-none flex justify-center">
       <div class="w-full max-w-xl pointer-events-auto mx-auto flex justify-center">
         <button onclick="openAIModal()" class="w-full sm:max-w-md py-4 px-6 btn-ai-glow text-white font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
-            <span class="text-xl">⚡</span> <span id="btn-ai-text">Mbong AI</span>
+            <span class="text-xl">⚡</span> <span id="btn-ai-text">Mbong Analysis</span>
         </button>
       </div>
     </div>
@@ -835,7 +835,7 @@
     <div class="bg-slate-900/90 backdrop-blur-2xl border border-cyan-800/50 rounded-[2rem] p-6 w-full max-w-2xl flex flex-col space-y-5 shadow-[0_0_50px_rgba(14,165,233,0.15)] mb-4 sm:mb-0" onclick="event.stopPropagation()">
       <div class="flex items-center justify-between border-b border-slate-700/50 pb-4">
         <h3 id="modal-ai-title" class="text-sm font-black text-cyan-400 uppercase tracking-widest flex items-center gap-2">
-          <span class="text-xl">⚡</span> Mbong AI Engine
+          <span class="text-xl">⚡</span> Mbong Analysis Engine
         </h3>
         <button onclick="closeAIModal()" class="text-slate-500 hover:text-cyan-400 text-lg transition-colors">✕</button>
       </div>
@@ -929,7 +929,7 @@
         opt_mm: "Milimeter",
         opt_cm: "Centimeter",
         opt_m: "Meter",
-        btn_ai: "Mbong AI",
+        btn_ai: "Mbong Analysis",
         admin_panel_title: "⚙️ Admin Panel",
         admin_eff: "Effisiensi SMPS (%)",
         admin_pf: "Power Factor (Cos φ)",
@@ -948,7 +948,7 @@
         modal_wa_app: "Buka App WhatsApp ➔",
         modal_wa_or: "Atau Nomor Custom",
         modal_wa_send: "Kirim",
-        modal_ai_title: "Mbong AI Engine",
+        modal_ai_title: "Mbong Analysis Engine",
         modal_ai_copy: "Copy",
         modal_ai_fw: "Forward WA",
         modal_ai_close: "Tutup",
@@ -1057,7 +1057,7 @@
         opt_mm: "Millimeter",
         opt_cm: "Centimeter",
         opt_m: "Meter",
-        btn_ai: "Mbong AI",
+        btn_ai: "Mbong Analysis",
         admin_panel_title: "⚙️ Admin Panel",
         admin_eff: "SMPS Efficiency (%)",
         admin_pf: "Power Factor (Cos φ)",
@@ -1076,7 +1076,7 @@
         modal_wa_app: "Open WhatsApp App ➔",
         modal_wa_or: "Or Custom Number",
         modal_wa_send: "Send",
-        modal_ai_title: "Mbong AI Engine",
+        modal_ai_title: "Mbong Analysis Engine",
         modal_ai_copy: "Copy",
         modal_ai_fw: "Forward WA",
         modal_ai_close: "Close",
@@ -1184,7 +1184,7 @@
         opt_mm: "毫米",
         opt_cm: "厘米",
         opt_m: "米",
-        btn_ai: "Mbong AI",
+        btn_ai: "Mbong Analysis",
         admin_panel_title: "⚙️ 管理面板",
         admin_eff: "电源效率 (%)",
         admin_pf: "功率因数 (Cos φ)",
@@ -1203,7 +1203,7 @@
         modal_wa_app: "打开 WhatsApp 应用 ➔",
         modal_wa_or: "或自定义号码",
         modal_wa_send: "发送",
-        modal_ai_title: "Mbong AI 引擎",
+        modal_ai_title: "Mbong Analysis 引擎",
         modal_ai_copy: "复制",
         modal_ai_fw: "转发 WA",
         modal_ai_close: "关闭",
@@ -2125,7 +2125,7 @@
 
       if (currentLang === 'id') {
         const buildType = isCabinet ? `kabinet ukuran ${cabVal}mm` : `modul`;
-        currentAITextRaw = `Halo bosku! Ini Bang Mbong AI. Saya udah hitungin spek teknis buat videotron-nya nih. Yuk kita bedah bareng biar eksekusinya mulus dan aman di lapangan! 🚀\n\n` +
+        currentAITextRaw = `Halo bosku! Ini Bang Mbong Analysis. Saya udah hitungin spek teknis buat videotron-nya nih. Yuk kita bedah bareng biar eksekusinya mulus dan aman di lapangan! 🚀\n\n` +
           `**1. Visual & Resolusi**\n` +
           `Kita pakai ${buildType} dengan spek ${pitchText}. Dimensi fisiknya di ${sizeStr} (luas ${area}). Nah, resolusi bersih yang kita dapat itu ${resW} x ${resH} px (Total: ${totPx} dots). Biar gambarnya kelihatan tajam maksimal dan nggak pecah, jarak tonton audiens idealnya dari ${pitchNum} meter atau lebih ya.\n\n` +
           `**2. Aspek Rasio & Desain Konten**\n` +
@@ -2137,10 +2137,10 @@
           `Ini bagian yang nggak boleh disepelein—urusan setrum. Waktu ngetes warna putih full (beban maksimal), layar ini bakal nyedot sekitar ${kw} kW. Tapi pas udah jalan muter video normal, rata-rata konsumsinya turun di kisaran ${avgKw} kW.\n` +
           (parseFloat(current1P) > 20 ? `🚨 **WARNING DARI BANG MBONG:** Beban arusnya lumayan ngeri nih, tembus ${current1P}A kalau dipaksa pakai listrik 1 Fasa (220V). Rawan banget kabel panas atau MCB anjlok. Saran wajib dari saya: pecah ke listrik panel 3 Fasa (380V). Nanti beban per fasanya jadi jauh lebih enteng, cuma ${current3P}A aja. Pasang MCB ${mcb3P} biar tidur nyenyak dan instalasi aman sentosa.\n\n` : `✅ **STATUS AMAN:** Tarikan arusnya santai banget di ${current1P}A. Pakai instalasi standar 1 Fasa (220V) aja udah lebih dari cukup. Tinggal pasang MCB ${mcb1P} dan pakai ukuran kabel yang bener, aman deh.\n\n`) +
           `Semoga data teknis ini ngebantu kelancaran proyeknya ya. Kalau masih ada yang ganjel atau mau diskusi soal wiring, langsung aja kontak Bang Mbong. Gaspol! 🍻\n` +
-          `-- Mbong AI Engine --`;
+          `-- Mbong Analysis Engine --`;
       } else if (currentLang === 'en') {
         const buildType = isCabinet ? `${cabVal}mm cabinets` : `modules`;
-        currentAITextRaw = `Hey there! Mbong AI here. I've crunched the numbers for your LED display project. Let's break down the technical specs so your execution is flawless and perfectly safe! 🚀\n\n` +
+        currentAITextRaw = `Hey there! Mbong Analysis here. I've crunched the numbers for your LED display project. Let's break down the technical specs so your execution is flawless and perfectly safe! 🚀\n\n` +
           `**1. Visual & Resolution**\n` +
           `We're building this using ${buildType} with a ${pitchText} spec. The physical size comes out to ${sizeStr} (total area: ${area}), giving us a crystal-clear native resolution of ${resW} x ${resH} px (${totPx} dots total). For the absolute best viewing experience without pixelation, your audience should be standing at least ${pitchNum} meters away.\n\n` +
           `**2. Aspect Ratio & Content Design**\n` +
@@ -2152,10 +2152,10 @@
           `Now for the most critical part: power. When running a full-white test (maximum load), this screen will draw about ${kw} kW. However, during normal video playback, the average consumption drops to around ${avgKw} kW.\n` +
           (parseFloat(current1P) > 20 ? `🚨 **MBONG'S WARNING:** The current draw is quite heavy, hitting ${current1P}A if forced on a single phase (220V). This is a huge risk for overheating cables or tripped breakers. My strong recommendation: upgrade to a 3-Phase (380V) distribution panel. This balances the load beautifully to just ${current3P}A per phase. Secure it with a ${mcb3P} MCB and you'll sleep soundly knowing your installation is safe.\n\n` : `✅ **ALL CLEAR:** The current draw is a very relaxed ${current1P}A. A standard 1-Phase (220V) installation will handle this effortlessly. Just use the recommended ${mcb1P} MCB and proper cable sizing, and you're good to go.\n\n`) +
           `Hope this technical brief makes your installation a breeze. If you hit any snags or need to discuss wiring topographies, Bang Mbong is just a text away. Cheers! 🍻\n` +
-          `-- Mbong AI Engine --`;
+          `-- Mbong Analysis Engine --`;
       } else if (currentLang === 'zh') {
         const buildType = isCabinet ? `${cabVal}mm 箱体` : `模组`;
-        currentAITextRaw = `嗨！我是 Mbong AI。我已经为您算好了 LED 屏幕的技术参数。让我们一起把细节过一遍，确保您的项目落地既完美又安全！🚀\n\n` +
+        currentAITextRaw = `嗨！我是 Mbong Analysis。我已经为您算好了 LED 屏幕的技术参数。让我们一起把细节过一遍，确保您的项目落地既完美又安全！🚀\n\n` +
           `**1. 视觉与分辨率**\n` +
           `我们这次采用 ${pitchText} 规格的 ${buildType}。物理尺寸为 ${sizeStr}（总面积 ${area}），点亮后的原生分辨率是 ${resW} x ${resH} 像素（总计 ${totPx} 个像素点）。为了保证画面清晰不带颗粒感，观众的最佳观看距离建议在 ${pitchNum} 米或更远。\n\n` +
           `**2. 纵横比与内容设计**\n` +
@@ -2167,7 +2167,7 @@
           `接下来是最不能马虎的用电部分。在全白测试（满载）时，这块屏幕会消耗大约 ${kw} kW 的功率。但在正常播放视频时，平均功耗会降到 ${avgKw} kW 左右。\n` +
           (parseFloat(current1P) > 20 ? `🚨 **MBONG 的严重警告**：电流负载相当大，如果强行使用单相电 (220V)，电流会飙升到 ${current1P}A。这极易导致电缆发热或频繁跳闸！我强烈建议：必须采用三相电 (380V) 配电柜。这样每相负载就会被完美分摊到仅仅 ${current3P}A。配合 ${mcb3P} 的空气开关，您的工程就会稳如泰山。\n\n` : `✅ **安全状态**：当前电流仅为 ${current1P}A，非常轻松。使用标准的单相电 (220V) 安装就绰绰有余。只要配上 ${mcb1P} 的空开和合格的线缆，就万事大吉了。\n\n`) +
           `希望这份技术摘要能帮您避开安装中的坑。如果遇到任何技术难题或需要讨论布线，随时联系 Bang Mbong。祝项目顺利！🍻\n` +
-          `-- Mbong AI 智能引擎 --`;
+          `-- Mbong Analysis 智能引擎 --`;
       }
     }
 
@@ -2426,4 +2426,4 @@
     });
   </script>
 
-</body></html>
+</body></html>!
