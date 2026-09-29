@@ -2,7 +2,7 @@
 <html lang="id"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MBONG CALCULATOR PRO - Precision Engineering V4.3</title>
+  <title>MBONG CALCULATOR PRO - Precision Engineering V4.4</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -299,7 +299,7 @@
           <h1 class="font-black text-[14px] sm:text-[20px] md:text-[22px] tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 leading-tight whitespace-nowrap">
             MBONG CALCULATOR <span class="text-cyan-500 font-mono">PRO</span>
           </h1>
-          <p id="t-subtitle" onclick="openAboutModal()" class="text-[10px] sm:text-[12px] text-slate-500 font-medium tracking-wide truncate max-w-[160px] sm:max-w-none mt-0.5 cursor-pointer hover:text-cyan-600 transition-colors">Sistem Kalkulasi Resolusi, Video Processor &amp; Rekayasa Daya Videotron V4.3</p>
+          <p id="t-subtitle" onclick="openAboutModal()" class="text-[10px] sm:text-[12px] text-slate-500 font-medium tracking-wide truncate max-w-[160px] sm:max-w-none mt-0.5 cursor-pointer hover:text-cyan-600 transition-colors">Sistem Kalkulasi Resolusi, Video Processor &amp; Rekayasa Daya Videotron V4.4</p>
         </div>
       </div>
 
@@ -377,6 +377,8 @@
                   <option id="opt-cab-600" value="600">P0.9 - P2.5 Indoor (600×337.5mm)</option>
                   <option id="opt-cab-640-in" value="640">P0.9 - P2.5 Indoor (640×480mm)</option>
                   <option id="opt-cab-480-in" value="480">P0.9 - P2.5 Indoor (480×480mm)</option>
+                  <option id="opt-cab-500" value="500x500">Kabinet 500x500</option>
+                  <option id="opt-cab-500-1000" value="500x1000">Kabinet 500x1000</option>
                   <option id="opt-cab-640" value="640x640">Kabinet 640x640</option>
                   <option id="opt-cab-960" value="960x960">Kabinet 960x960</option>
                   <option id="opt-cab-custom" value="custom" selected>Tanpa Kabinet / Custom</option>
@@ -729,7 +731,7 @@
       <div class="pcb-silkscreen" style="bottom: 110px; right: 20px;">U2</div>
       <div class="pcb-silkscreen" style="top: 20px; right: 40px; transform: rotate(90deg);">C12</div>
       <div class="pcb-silkscreen" style="bottom: 40px; left: 80px;">R45</div>
-      <div class="pcb-silkscreen" style="bottom: 20px; right: 20px;">REV 4.3</div>
+      <div class="pcb-silkscreen" style="bottom: 20px; right: 20px;">REV 4.4</div>
 
       <!-- Realstic IC Chips -->
       <div class="ic-chip ic-vertical w-12 h-16 top-8 left-8">
@@ -857,13 +859,15 @@
     // ==========================================
     const DICTIONARY = {
       id: {
-        subtitle: "Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron V4.3",
+        subtitle: "Sistem Kalkulasi Resolusi, Video Processor & Rekayasa Daya Videotron V4.4",
         dim_title: "Dimensi & Modul",
         pitch_label: "Pixel Pitch & Tipe Modul",
         cabinet_label: "Pixel Pitch & Tipe Kabinet",
         opt_cab_600: "P0.9 - P2.5 Indoor (600×337.5mm)",
         opt_cab_640_in: "P0.9 - P2.5 Indoor (640×480mm)",
         opt_cab_480_in: "P0.9 - P2.5 Indoor (480×480mm)",
+        opt_cab_500: "Kabinet 500x500",
+        opt_cab_500_1000: "Kabinet 500x1000",
         opt_cab_640: "Kabinet 640x640",
         opt_cab_960: "Kabinet 960x960",
         opt_cab_custom: "Tanpa Kabinet / Custom",
@@ -985,13 +989,15 @@
         status_rec: "Saran"
       },
       en: {
-        subtitle: "Resolution, Processor & Power Engineering V4.3",
+        subtitle: "Resolution, Processor & Power Engineering V4.4",
         dim_title: "Dimensions",
         pitch_label: "Pixel Pitch & Module Type",
         cabinet_label: "Pixel Pitch & Cabinet Type",
         opt_cab_600: "P0.9 - P2.5 Indoor (600×337.5mm)",
         opt_cab_640_in: "P0.9 - P2.5 Indoor (640×480mm)",
         opt_cab_480_in: "P0.9 - P2.5 Indoor (480×480mm)",
+        opt_cab_500: "500x500 Cabinet",
+        opt_cab_500_1000: "500x1000 Cabinet",
         opt_cab_640: "640x640 Cabinet",
         opt_cab_960: "960x960 Cabinet",
         opt_cab_custom: "No Cabinet / Custom",
@@ -1112,13 +1118,15 @@
         status_rec: "Recommended"
       },
       zh: {
-        subtitle: "LED屏幕分辨率、视频处理器与电力计算 V4.3",
+        subtitle: "LED屏幕分辨率、视频处理器与电力计算 V4.4",
         dim_title: "尺寸与模组",
         pitch_label: "像素间距",
         cabinet_label: "像素间距与箱体类型",
         opt_cab_600: "P0.9 - P2.5 室内 (600×337.5mm)",
         opt_cab_640_in: "P0.9 - P2.5 室内 (640×480mm)",
         opt_cab_480_in: "P0.9 - P2.5 室内 (480×480mm)",
+        opt_cab_500: "500x500 箱体",
+        opt_cab_500_1000: "500x1000 箱体",
         opt_cab_640: "640x640 箱体",
         opt_cab_960: "960x960 箱体",
         opt_cab_custom: "无箱体 / 自定义",
@@ -1323,11 +1331,11 @@
       "2.0":      { widthMm: 320, heightMm: 160, pixelW: 160, pixelH: 80,  maxWattsDC: 22.0, avgWattsDC: 7.5, type: 'indoor' },
       "2.5":      { widthMm: 320, heightMm: 160, pixelW: 128, pixelH: 64,  maxWattsDC: 20.0, avgWattsDC: 6.6, type: 'indoor' },
       "2.604":    { widthMm: 250, heightMm: 250, pixelW: 96,  pixelH: 96,  maxWattsDC: 30.0, avgWattsDC: 10.0, type: 'indoor' },
-      "2.976":    { widthMm: 500, heightMm: 500, pixelW: 168, pixelH: 168, maxWattsDC: 125.0, avgWattsDC: 41.5, type: 'indoor' }, 
+      "2.976":    { widthMm: 250, heightMm: 250, pixelW: 84,  pixelH: 84,  maxWattsDC: 31.25, avgWattsDC: 10.375, type: 'indoor' }, 
       "3.076-in": { widthMm: 320, heightMm: 160, pixelW: 104, pixelH: 52,  maxWattsDC: 18.0, avgWattsDC: 6.0, type: 'indoor' },
       "3.076-out":{ widthMm: 320, heightMm: 160, pixelW: 104, pixelH: 52,  maxWattsDC: 42.0, avgWattsDC: 16.8, type: 'outdoor' },
-      "3.91-in":  { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 130.0, avgWattsDC: 43.0, type: 'indoor' },
-      "3.91-out": { widthMm: 500, heightMm: 500, pixelW: 128, pixelH: 128, maxWattsDC: 220.0, avgWattsDC: 88.0, type: 'outdoor' },
+      "3.91-in":  { widthMm: 250, heightMm: 250, pixelW: 64,  pixelH: 64,  maxWattsDC: 32.5, avgWattsDC: 10.75, type: 'indoor' },
+      "3.91-out": { widthMm: 250, heightMm: 250, pixelW: 64,  pixelH: 64,  maxWattsDC: 55.0, avgWattsDC: 22.0, type: 'outdoor' },
       "4.0-in":   { widthMm: 320, heightMm: 160, pixelW: 80,  pixelH: 40,  maxWattsDC: 16.0, avgWattsDC: 5.3, type: 'indoor' },
       "4.0-out":  { widthMm: 320, heightMm: 160, pixelW: 80,  pixelH: 40,  maxWattsDC: 45.0, avgWattsDC: 18.0, type: 'outdoor' },
       "5.0-in":   { widthMm: 320, heightMm: 160, pixelW: 64,  pixelH: 32,  maxWattsDC: 15.0, avgWattsDC: 5.0, type: 'indoor' },
@@ -1347,11 +1355,11 @@
         "2.0": "P2.0 - High Definition (Indoor, 320×160mm)",
         "2.5": "P2.5 - Standar Auditorium (Indoor, 320×160mm)",
         "2.604": "P2.604 - Rental / Stage Indoor (250×250mm)",
-        "2.976": "P2.976 - Standar Rental Event (500×500mm)",
+        "2.976": "P2.976 - Standar Rental Event (250×250mm)",
         "3.076-in": "P3.076 - Ballroom & Hall (Indoor, 320×160mm)",
         "3.076-out": "P3.076 - High Brightness (Outdoor, 320×160mm)",
-        "3.91-in": "P3.91 - Rental Event (Indoor, 500×500mm)",
-        "3.91-out": "P3.91 - Rental Panggung (Outdoor, 500×500mm)",
+        "3.91-in": "P3.91 - Rental Event (Indoor, 250×250mm)",
+        "3.91-out": "P3.91 - Rental Panggung (Outdoor, 250×250mm)",
         "4.0-in": "P4.0 - Hall & Semi-Indoor (Indoor, 320×160mm)",
         "4.0-out": "P4.0 - Videotron Reklame (Outdoor, 320×160mm)",
         "5.0-in": "P5.0 - Large Hall / Gedung (Indoor, 320×160mm)",
@@ -1369,11 +1377,11 @@
         "2.0": "P2.0 - High Definition (Indoor, 320×160mm)",
         "2.5": "P2.5 - Standard Auditorium (Indoor, 320×160mm)",
         "2.604": "P2.604 - Rental / Stage Indoor (250×250mm)",
-        "2.976": "P2.976 - Standard Rental Event (500×500mm)",
+        "2.976": "P2.976 - Standard Rental Event (250×250mm)",
         "3.076-in": "P3.076 - Ballroom & Hall (Indoor, 320×160mm)",
         "3.076-out": "P3.076 - High Brightness (Outdoor, 320×160mm)",
-        "3.91-in": "P3.91 - Event Rental (Indoor, 500×500mm)",
-        "3.91-out": "P3.91 - Stage Rental (Outdoor, 500×500mm)",
+        "3.91-in": "P3.91 - Event Rental (Indoor, 250×250mm)",
+        "3.91-out": "P3.91 - Stage Rental (Outdoor, 250×250mm)",
         "4.0-in": "P4.0 - Hall & Semi-Indoor (Indoor, 320×160mm)",
         "4.0-out": "P4.0 - Billboard Display (Outdoor, 320×160mm)",
         "5.0-in": "P5.0 - Large Hall (Indoor, 320×160mm)",
@@ -1391,11 +1399,11 @@
         "2.0": "P2.0 - 高清显示 (室内, 320×160mm)",
         "2.5": "P2.5 - 礼堂标准 (室内, 320×160mm)",
         "2.604": "P2.604 - 租赁舞台 (室内, 250×250mm)",
-        "2.976": "P2.976 - 标准租赁 (室内, 500×500mm)",
+        "2.976": "P2.976 - 标准租赁 (室内, 250×250mm)",
         "3.076-in": "P3.076 - 宴会厅 (室内, 320×160mm)",
         "3.076-out": "P3.076 - 高亮全彩 (户外, 320×160mm)",
-        "3.91-in": "P3.91 - 活动租赁 (室内, 500×500mm)",
-        "3.91-out": "P3.91 - 舞台租赁 (户外, 500×500mm)",
+        "3.91-in": "P3.91 - 活动租赁 (室内, 250×250mm)",
+        "3.91-out": "P3.91 - 舞台租赁 (户外, 250×250mm)",
         "4.0-in": "P4.0 - 半室内 (室内, 320×160mm)",
         "4.0-out": "P4.0 - 广告屏 (户外, 320×160mm)",
         "5.0-in": "P5.0 - 大型展厅 (室内, 320×160mm)",
@@ -1539,15 +1547,11 @@
       if (document.getElementById('opt-cab-640-in')) document.getElementById('opt-cab-640-in').innerText = dict.opt_cab_640_in;
       if (document.getElementById('opt-cab-480-in')) document.getElementById('opt-cab-480-in').innerText = dict.opt_cab_480_in;
       
-      if (document.getElementById('opt-cab-640')) {
-          document.getElementById('opt-cab-640').innerText = dict.opt_cab_640;
-      }
-      if (document.getElementById('opt-cab-960')) {
-          document.getElementById('opt-cab-960').innerText = dict.opt_cab_960;
-      }
-      if (document.getElementById('opt-cab-custom')) {
-          document.getElementById('opt-cab-custom').innerText = dict.opt_cab_custom;
-      }
+      if (document.getElementById('opt-cab-500')) document.getElementById('opt-cab-500').innerText = dict.opt_cab_500;
+      if (document.getElementById('opt-cab-500-1000')) document.getElementById('opt-cab-500-1000').innerText = dict.opt_cab_500_1000;
+      if (document.getElementById('opt-cab-640')) document.getElementById('opt-cab-640').innerText = dict.opt_cab_640;
+      if (document.getElementById('opt-cab-960')) document.getElementById('opt-cab-960').innerText = dict.opt_cab_960;
+      if (document.getElementById('opt-cab-custom')) document.getElementById('opt-cab-custom').innerText = dict.opt_cab_custom;
       
       document.getElementById('t-width-label').innerText = dict.width_label;
       document.getElementById('t-height-label').innerText = dict.height_label;
@@ -1683,11 +1687,10 @@
       // =========================== NOVASTAR ===========================
       let n_main, n_alt, n_capText, n_load;
       
-      // Prioritaskan mencari prosesor dengan tipe yang sama
-      let n_match = NOVASTAR_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
-      // Jika tidak ketemu yang tipenya sama, ambil fallback apa saja yang muat kapasitasnya
+      // Memerlukan kecocokan jumlah port agar akurasi logic tinggi
+      let n_match = NOVASTAR_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
       if(!n_match) {
-          n_match = NOVASTAR_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
+          n_match = NOVASTAR_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
       }
 
       if(n_match) {
@@ -1713,11 +1716,9 @@
       // =========================== HUIDU ===========================
       let h_main, h_alt, h_capText, h_load;
       
-      // Prioritaskan mencari prosesor dengan tipe yang sama
-      let h_match = HUIDU_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
-      // Fallback
+      let h_match = HUIDU_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
       if(!h_match) {
-          h_match = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH);
+          h_match = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
       }
       
       if(h_match) {
@@ -1749,9 +1750,10 @@
       if(!w || !h) return { dec:"0.000", frac:"0:0", name:"-" };
       let gcd = getGCD(w,h); let n = w/gcd, d = h/gcd, r = w/h;
       let name = dict.ar_custom;
-      if(Math.abs(r - 16/9) < 0.05) { n=16; d=9; name = dict.ar_std; }
-      else if(Math.abs(r - 4/3) < 0.05) { n=4; d=3; name = dict.ar_full; }
-      else if(Math.abs(r - 21/9) < 0.05) { n=21; d=9; name = dict.ar_wide; }
+      // Mengurangi toleransi deviasi untuk akurasi label Standar
+      if(Math.abs(r - 16/9) < 0.015) { n=16; d=9; name = dict.ar_std; }
+      else if(Math.abs(r - 4/3) < 0.015) { n=4; d=3; name = dict.ar_full; }
+      else if(Math.abs(r - 21/9) < 0.015) { n=21; d=9; name = dict.ar_wide; }
       return { dec: r.toFixed(3), frac: `${n}:${d}`, name };
     }
 
@@ -1773,6 +1775,8 @@
           if (cabVal === "600" && mod.type === 'indoor' && pitchNum <= 2.5) { baseWMm = 600; baseHMm = 337.5; isCabinet = true; }
           else if (cabVal === "640" && mod.type === 'indoor' && pitchNum <= 2.5) { baseWMm = 640; baseHMm = 480; isCabinet = true; }
           else if (cabVal === "480" && mod.type === 'indoor' && pitchNum <= 2.5) { baseWMm = 480; baseHMm = 480; isCabinet = true; }
+          else if (cabVal === "500x500") { baseWMm = 500; baseHMm = 500; isCabinet = true; }
+          else if (cabVal === "500x1000") { baseWMm = 500; baseHMm = 1000; isCabinet = true; }
           else if (cabVal === "640x640") { baseWMm = 640; baseHMm = 640; isCabinet = true; }
           else if (cabVal === "960x960") { baseWMm = 960; baseHMm = 960; isCabinet = true; }
       }
@@ -1791,14 +1795,36 @@
       const actHMm = gridH * baseHMm;
       const area = (actWMm/1000) * (actHMm/1000);
       
-      let pxW, pxH;
+      // Modul Calculation Helper for Cabinet
+      let modsPerCabW = 1;
+      let modsPerCabH = 1;
       if (isCabinet) {
-          pxW = gridW * Math.round(baseWMm / pitchNum);
-          pxH = gridH * Math.round(baseHMm / pitchNum);
+          modsPerCabW = Math.max(1, Math.round(baseWMm / mod.widthMm));
+          modsPerCabH = Math.max(1, Math.round(baseHMm / mod.heightMm));
+      }
+      
+      // Logika perbaikan: Kalkulasi Resolusi Piksel yang presisi saat menggunakan opsi kabinet
+      let pxW, pxH;
+      let cabPxW = mod.pixelW, cabPxH = mod.pixelH;
+      if (isCabinet) {
+          if (Math.abs(Math.round(baseWMm / mod.widthMm) - (baseWMm / mod.widthMm)) < 0.01) {
+              cabPxW = modsPerCabW * mod.pixelW;
+          } else {
+              cabPxW = Math.round(baseWMm / pitchNum);
+          }
+          
+          if (Math.abs(Math.round(baseHMm / mod.heightMm) - (baseHMm / mod.heightMm)) < 0.01) {
+              cabPxH = modsPerCabH * mod.pixelH;
+          } else {
+              cabPxH = Math.round(baseHMm / pitchNum);
+          }
+          pxW = gridW * cabPxW;
+          pxH = gridH * cabPxH;
       } else {
           pxW = gridW * mod.pixelW;
           pxH = gridH * mod.pixelH;
       }
+
       const totPx = pxW * pxH;
       const mp = (totPx / 1000000).toFixed(2);
       
@@ -1823,7 +1849,7 @@
       document.getElementById('out-standard-ratio').innerText = aspect.name;
       document.getElementById('out-exact-ratio').innerText = `${aspect.frac} (${aspect.dec}:1)`;
 
-      // == KECOCOKAN VIDEO ADDED HERE ==
+      // == KECOCOKAN VIDEO ==
       const ratioValue = pxW / pxH;
       let matchStatus = "";
       let matchClass = "";
@@ -1847,7 +1873,6 @@
           elRatioStatus.innerText = matchStatus;
           elRatioStatus.className = matchClass;
       }
-      // == END KECOCOKAN VIDEO ==
 
       // ==========================================
       // LOGIKA RECEIVING CARD (RC) & LIMITASI PORT
@@ -1855,14 +1880,12 @@
       let rcCols, rcRows, totalRC, rcPxW, rcPxH;
 
       if (isCabinet) {
-          // Jika menggunakan kabinet, asumsikan 1 RC per Kabinet
           rcCols = gridW;
           rcRows = gridH;
           totalRC = rcCols * rcRows;
-          rcPxW = Math.round(baseWMm / pitchNum);
-          rcPxH = Math.round(baseHMm / pitchNum);
+          rcPxW = cabPxW;
+          rcPxH = cabPxH;
       } else {
-          // Custom Modul (Tanpa Kabinet) - Aturan Batas Khusus
           let maxModW = 1, maxModH = 1;
 
           if (pitchKey === "1.538") { maxModW = 2; maxModH = 4; }
@@ -1873,7 +1896,6 @@
           else if (pitchKey.startsWith("4.")) { maxModW = 4; maxModH = 6; }
           else if (pitchKey.startsWith("5.")) { maxModW = 5; maxModH = 6; }
           else {
-              // Standar keamanan RC murni: 512x512 fallback
               maxModW = Math.max(1, Math.floor(512 / mod.pixelW));
               maxModH = Math.max(1, Math.floor(512 / mod.pixelH));
           }
@@ -1918,16 +1940,14 @@
           document.getElementById('out-hd-load-badge').className = "text-[9px] font-bold px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 shadow-sm";
       }
 
-      // PRECISE POWER CALCULATION
+      // PRECISE POWER CALCULATION (Perbaikan Logika: Pakai perhitungan keping modul murni untuk menutupi deviasi pembulatan kabinet)
       const eff = (parseFloat(document.getElementById('adm-eff')?.value) || 88) / 100;
       const pf = parseFloat(document.getElementById('adm-pf')?.value) || 0.95;
       
-      const modAreaSqm = (mod.widthMm / 1000) * (mod.heightMm / 1000);
-      const wattsPerSqmMax = mod.maxWattsDC / modAreaSqm;
-      const wattsPerSqmAvg = mod.avgWattsDC / modAreaSqm;
+      const totalModsCount = isCabinet ? totGrid * (modsPerCabW * modsPerCabH) : totGrid;
       
-      const totalWattsDC = area * wattsPerSqmMax;
-      const totalAvgWattsDC = area * wattsPerSqmAvg;
+      const totalWattsDC = totalModsCount * mod.maxWattsDC;
+      const totalAvgWattsDC = totalModsCount * mod.avgWattsDC;
       
       const wMax = totalWattsDC / eff;
       const wAvg = totalAvgWattsDC / eff;
@@ -2268,15 +2288,28 @@
                 if (cabVal === "600" && dbMod.type === 'indoor' && pitchNum <= 2.5) { cw = 600; ch = 337.5; isValidCab = true; }
                 else if (cabVal === "640" && dbMod.type === 'indoor' && pitchNum <= 2.5) { cw = 640; ch = 480; isValidCab = true; }
                 else if (cabVal === "480" && dbMod.type === 'indoor' && pitchNum <= 2.5) { cw = 480; ch = 480; isValidCab = true; }
+                else if (cabVal === "500x500") { cw = 500; ch = 500; isValidCab = true; }
+                else if (cabVal === "500x1000") { cw = 500; ch = 1000; isValidCab = true; }
                 else if (cabVal === "640x640") { cw = 640; ch = 640; isValidCab = true; }
                 else if (cabVal === "960x960") { cw = 960; ch = 960; isValidCab = true; }
                 
                 if (isValidCab) {
+                    let cabPxW, cabPxH;
+                    if (Math.abs(Math.round(cw / dbMod.widthMm) - (cw / dbMod.widthMm)) < 0.01) {
+                        cabPxW = Math.round(cw / dbMod.widthMm) * dbMod.pixelW;
+                    } else {
+                        cabPxW = Math.round(cw / pitchNum);
+                    }
+                    if (Math.abs(Math.round(ch / dbMod.heightMm) - (ch / dbMod.heightMm)) < 0.01) {
+                        cabPxH = Math.round(ch / dbMod.heightMm) * dbMod.pixelH;
+                    } else {
+                        cabPxH = Math.round(ch / pitchNum);
+                    }
                     return { 
                         w: cw, 
                         h: ch, 
-                        pxW: Math.round(cw / pitchNum), 
-                        pxH: Math.round(ch / pitchNum) 
+                        pxW: cabPxW, 
+                        pxH: cabPxH 
                     };
                 }
             }
@@ -2426,4 +2459,5 @@
     });
   </script>
 
-</body></html>!
+</body></html>
+```eof
