@@ -22,6 +22,21 @@
     }
   </script>
   <style>
+    /* --- CSS PROTEKSI (Mencegah Seleksi Teks) --- */
+    body {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    input, textarea, select {
+      -webkit-user-select: auto !important;
+      -moz-user-select: auto !important;
+      -ms-user-select: auto !important;
+      user-select: auto !important;
+    }
+
     /* =========================================
        MODERN NEO-PCB / TECH LIGHT THEME (SOFTER & SLEEK)
        ========================================= */
@@ -271,7 +286,7 @@
     .smd-h { transform: rotate(90deg); }
   </style>
 </head>
-<body class="text-slate-700 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+<body class="text-slate-700 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-cyan-500 selection:text-white" oncontextmenu="return false;">
 
   <!-- Backgrounds & Tech Accents -->
   <div class="animated-bg"></div>
@@ -854,6 +869,18 @@
 
   <!-- JAVASCRIPT -->
   <script>
+    // --- SCRIPT PROTEKSI (Mencegah Klik Kanan & Inspect Element) ---
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.onkeydown = function(e) {
+      if(e.keyCode == 123) return false; // F12
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 73) return false; // Ctrl+Shift+I
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 67) return false; // Ctrl+Shift+C
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 74) return false; // Ctrl+Shift+J
+      if(e.ctrlKey && e.keyCode == 85) return false; // Ctrl+U (View Source)
+      if(e.ctrlKey && e.keyCode == 83) return false; // Ctrl+S (Save)
+    };
+    document.addEventListener('copy', function(e) { e.preventDefault(); });
+
     // ==========================================
     // DICTIONARY LENGKAP UNTUK MULTI-BAHASA
     // ==========================================
@@ -2492,4 +2519,3 @@
   </script>
 
 </body></html>
-```
