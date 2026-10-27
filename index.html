@@ -22,21 +22,6 @@
     }
   </script>
   <style>
-    /* --- CSS PROTEKSI (Mencegah Seleksi Teks) --- */
-    body {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    input, textarea, select {
-      -webkit-user-select: auto !important;
-      -moz-user-select: auto !important;
-      -ms-user-select: auto !important;
-      user-select: auto !important;
-    }
-
     /* =========================================
        MODERN NEO-PCB / TECH LIGHT THEME (SOFTER & SLEEK)
        ========================================= */
@@ -286,7 +271,7 @@
     .smd-h { transform: rotate(90deg); }
   </style>
 </head>
-<body class="text-slate-700 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-cyan-500 selection:text-white" oncontextmenu="return false;">
+<body class="text-slate-700 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
 
   <!-- Backgrounds & Tech Accents -->
   <div class="animated-bg"></div>
@@ -869,18 +854,6 @@
 
   <!-- JAVASCRIPT -->
   <script>
-    // --- SCRIPT PROTEKSI (Mencegah Klik Kanan & Inspect Element) ---
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.onkeydown = function(e) {
-      if(e.keyCode == 123) return false; // F12
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 73) return false; // Ctrl+Shift+I
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 67) return false; // Ctrl+Shift+C
-      if(e.ctrlKey && e.shiftKey && e.keyCode == 74) return false; // Ctrl+Shift+J
-      if(e.ctrlKey && e.keyCode == 85) return false; // Ctrl+U (View Source)
-      if(e.ctrlKey && e.keyCode == 83) return false; // Ctrl+S (Save)
-    };
-    document.addEventListener('copy', function(e) { e.preventDefault(); });
-
     // ==========================================
     // DICTIONARY LENGKAP UNTUK MULTI-BAHASA
     // ==========================================
@@ -1448,8 +1421,8 @@
       { name: "Huidu HD-A6", maxPx: 2300000, maxW: 3840, maxH: 1920, ports: 4, alt: "Huidu HD-VP410", type: "async" },
       { name: "Huidu HD-VP210", maxPx: 1300000, maxW: 3840, maxH: 1920, ports: 2, alt: "Huidu HD-A5", type: "sync" },
       { name: "Huidu HD-VP410", maxPx: 2600000, maxW: 3840, maxH: 1920, ports: 4, alt: "Huidu HD-A6", type: "sync" },
-      { name: "Huidu HD-VP630", maxPx: 3900000, maxW: 7680, maxH: 3840, ports: 6, alt: "Huidu HD-A8", type: "sync" },
-      { name: "Huidu HD-VP830", maxPx: 5200000, maxW: 7680, maxH: 3840, ports: 8, alt: "Huidu HD-A8", type: "sync" },
+      { name: "Huidu HD-VP630", maxPx: 3900000, maxW: 7680, maxH: 3840, ports: 6, alt: "Huidu HD-VP830", type: "sync" },
+      { name: "Huidu HD-VP830", maxPx: 5200000, maxW: 7680, maxH: 3840, ports: 8, alt: "Huidu HD-VP1240", type: "sync" },
       { name: "Huidu HD-VP1240", maxPx: 7800000, maxW: 16000, maxH: 3840, ports: 12, alt: "Huidu HD-VP1640", type: "sync" },
       { name: "Huidu HD-VP1640", maxPx: 10400000, maxW: 16000, maxH: 3840, ports: 16, alt: "Huidu Cluster", type: "sync" }
     ];
@@ -1687,75 +1660,71 @@
       const dict = DICTIONARY[currentLang];
       const portCap = parseFloat(document.getElementById('adm-port-cap')?.value) || 650000;
       
-      // Sinkronisasi PORT berdasarkan RC yg dirangkai
-      const maxRCperPort = Math.max(1, Math.floor(portCap / (rcPxW * rcPxH)));
-      const portByRC = Math.ceil(totalRC / maxRCperPort);
-      const portByPx = Math.ceil(totalPx / portCap);
-      const reqPorts = Math.max(portByPx, portByRC);
+      // Logika Port LAN akurat: 1 Port maksimal 650.000 pixel, mengkalkulasi murni berdasarkan total area
+      let reqPorts = Math.ceil(totalPx / portCap);
+      if (reqPorts < 1) reqPorts = 1;
 
       let capLblL = currentLang === 'zh' ? '宽' : 'W';
       let capLblT = currentLang === 'zh' ? '高' : 'H';
 
-      // Logika prioritas tipe berdasarkan instruksi terbaru
-      let targetType = 'sync';
-      if (modType === 'outdoor' && pitchNum >= 4.0) {
-          targetType = 'async';
-      } else if (modType === 'indoor' || pitchNum <= 3.91) {
-          targetType = 'sync';
-      }
+      // Logika Tipe: Indoor ATAU Pitch <= 3.91 wajib Sync. Outdoor Pitch > 3.91 disarankan Async.
+      const targetType = (modType === 'indoor' || pitchNum <= 3.91) ? 'sync' : 'async';
 
       // =========================== NOVASTAR ===========================
       let n_main, n_alt, n_capText, n_load;
-      let n_match = null;
       
-      // Mengabaikan mapping array untuk menerapkan instruksi spesifik VX (Utama/Alt) & VC (Utama/Alt)
       if (targetType === 'sync') {
-          if (reqPorts < 4 && totalPx <= 1300000 && totalW <= 3840 && totalH <= 1920) {
-              n_main = "Novastar VC2"; n_alt = "Novastar VX400"; // < 4 ports: VC as Main, VX as Alt
-              n_match = { maxPx: 1300000, maxW: 3840, maxH: 1920 };
-          } else if (reqPorts <= 4 && totalPx <= 2600000 && totalW <= 10240 && totalH <= 8192) {
-              n_main = "Novastar VX400"; n_alt = "Novastar VC4"; // >= 4 ports: VX as Main, VC as Alt
-              n_match = { maxPx: 2600000, maxW: 10240, maxH: 8192 };
-          } else if (reqPorts <= 6 && totalPx <= 3900000 && totalW <= 10240 && totalH <= 8192) {
-              n_main = "Novastar VX600"; n_alt = "Novastar VC6";
-              n_match = { maxPx: 3900000, maxW: 10240, maxH: 8192 };
-          } else if (reqPorts <= 10 && totalPx <= 6500000 && totalW <= 10240 && totalH <= 8192) {
-              n_main = "Novastar VX1000"; n_alt = "Novastar VC10";
-              n_match = { maxPx: 6500000, maxW: 10240, maxH: 8192 };
-          } else if (reqPorts <= 16 && totalPx <= 10400000 && totalW <= 16384 && totalH <= 8192) {
-              n_main = "Novastar VX16s"; n_alt = "Novastar VC16";
-              n_match = { maxPx: 10400000, maxW: 16384, maxH: 8192 };
+          const syncProcs = [
+              { nameVX: "Novastar VX400", nameVC: "Novastar VC2", maxPx: 1300000, maxW: 3840, maxH: 1920, ports: 2 },
+              { nameVX: "Novastar VX400", nameVC: "Novastar VC4", maxPx: 2600000, maxW: 10240, maxH: 8192, ports: 4 },
+              { nameVX: "Novastar VX600", nameVC: "Novastar VC6", maxPx: 3900000, maxW: 10240, maxH: 8192, ports: 6 },
+              { nameVX: "Novastar VX1000", nameVC: "Novastar VC10", maxPx: 6500000, maxW: 10240, maxH: 8192, ports: 10 },
+              { nameVX: "Novastar VX16s", nameVC: "Novastar VC16", maxPx: 10400000, maxW: 16384, maxH: 8192, ports: 16 },
+              { nameVX: "Novastar H15", nameVC: "Novastar VC24", maxPx: 15600000, maxW: 16384, maxH: 8192, ports: 24 }
+          ];
+
+          let match = syncProcs.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
+          if(!match) match = syncProcs.find(p => totalPx <= p.maxPx && reqPorts <= p.ports);
+
+          if (match) {
+              if (reqPorts < 4) {
+                  n_main = match.nameVC;
+                  n_alt = match.nameVX;
+              } else {
+                  n_main = match.nameVX;
+                  n_alt = match.nameVC;
+              }
+              n_capText = `${dict.max_lbl} ${(match.maxPx/1000000).toFixed(1)}M px (${capLblL}: ${match.maxW}px, ${capLblT}: ${match.maxH}px)`;
+              n_load = Math.min(100, ((totalPx / match.maxPx) * 100)).toFixed(1);
           } else {
               let count = Math.ceil(totalPx / 15600000);
               n_main = `${count}x Novastar VC24 (${dict.cascaded})`;
               n_alt = dict.splicer_dist;
-              n_match = { maxPx: 15600000, maxW: 16384, maxH: 8192 };
-              n_load = '-';
               n_capText = dict.splicer_ultra;
+              n_load = '-';
           }
-      } else { // async
-          if (reqPorts <= 2 && totalPx <= 650000 && totalW <= 4096 && totalH <= 4096) {
-              n_main = "Novastar TB30"; n_alt = "Novastar VC2";
-              n_match = { maxPx: 650000, maxW: 4096, maxH: 4096 };
-          } else if (reqPorts <= 2 && totalPx <= 1300000 && totalW <= 4096 && totalH <= 4096) {
-              n_main = "Novastar TB40/50"; n_alt = "Novastar VC2";
-              n_match = { maxPx: 1300000, maxW: 4096, maxH: 4096 };
-          } else if (reqPorts <= 4 && totalPx <= 2300000 && totalW <= 4096 && totalH <= 4096) {
-              n_main = "Novastar TB60"; n_alt = "Novastar VX400";
-              n_match = { maxPx: 2300000, maxW: 4096, maxH: 4096 };
+      } else {
+          const asyncProcs = [
+              { name: "Novastar TB30", maxPx: 650000, maxW: 4096, maxH: 4096, ports: 2, alt: "Novastar VC2" },
+              { name: "Novastar TB40/50", maxPx: 1300000, maxW: 4096, maxH: 4096, ports: 2, alt: "Novastar VC2" },
+              { name: "Novastar TB60", maxPx: 2300000, maxW: 4096, maxH: 4096, ports: 4, alt: "Novastar VX400" }
+          ];
+          
+          let match = asyncProcs.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
+          if(!match) match = asyncProcs.find(p => totalPx <= p.maxPx && reqPorts <= p.ports);
+
+          if (match) {
+              n_main = match.name;
+              n_alt = match.alt;
+              n_capText = `${dict.max_lbl} ${(match.maxPx/1000000).toFixed(1)}M px (${capLblL}: ${match.maxW}px, ${capLblT}: ${match.maxH}px)`;
+              n_load = Math.min(100, ((totalPx / match.maxPx) * 100)).toFixed(1);
           } else {
               let count = Math.ceil(totalPx / 2300000);
               n_main = `${count}x Novastar TB60`;
               n_alt = dict.cluster_async;
-              n_match = { maxPx: 2300000, maxW: 4096, maxH: 4096 };
-              n_load = '-';
               n_capText = dict.cluster_multi;
+              n_load = '-';
           }
-      }
-
-      if (n_match && n_load !== '-') {
-          n_capText = `${dict.max_lbl} ${(n_match.maxPx/1000000).toFixed(1)}M px (${capLblL}: ${n_match.maxW}px, ${capLblT}: ${n_match.maxH}px)`;
-          n_load = Math.min(100, ((totalPx / n_match.maxPx) * 100)).toFixed(1);
       }
       
       // =========================== HUIDU ===========================
@@ -1763,7 +1732,12 @@
       
       let h_match = HUIDU_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
       if(!h_match) {
-          h_match = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && totalW <= p.maxW && totalH <= p.maxH && reqPorts <= p.ports);
+          h_match = HUIDU_PROCESSORS.find(p => p.type === targetType && totalPx <= p.maxPx && reqPorts <= p.ports);
+      }
+      
+      // Fallback 2: Jika peruntukan Async/Sync mentok
+      if(!h_match) {
+          h_match = HUIDU_PROCESSORS.find(p => totalPx <= p.maxPx && reqPorts <= p.ports);
       }
       
       if(h_match) {
@@ -1959,21 +1933,7 @@
           document.getElementById('out-hd-rc-count').innerText = totalRC;
       }
       
-      // Update RC Model based on specific rules
-      let novaRcModel = "MRV412-N / DH7512-s";
-      if (pitchKey === "3.91-in" || pitchKey === "3.91-out") {
-          novaRcModel = "MRV208-N";
-      } else if (pitchKey === "2.604" && cabVal === "500x500") {
-          novaRcModel = "DH7508s / MRV208-N";
-      } else if (pitchKey === "2.604" && cabVal === "500x1000") {
-          novaRcModel = "DH7512s / MRV412-N";
-      }
-      
-      if(document.getElementById('out-nova-rc-model')) {
-          document.getElementById('out-nova-rc-model').innerText = novaRcModel;
-      }
-      
-      // Mengirimkan data RC untuk mem-validasi pemakaian port beserta pitchNum
+      // Mengirimkan data RC untuk mem-validasi pemakaian port
       const proc = getAccurateProcessorRecommendations(pxW, pxH, totPx, mod.type, totalRC, rcPxW, rcPxH, pitchNum);
       
       document.getElementById('proc-port-badge').innerText = `${proc.reqPorts} ${dict.port_rj45}`;
